@@ -1,4 +1,4 @@
 import os
 
-db_uri = os.getenv('DATABASE_URL', 'postgres://localhost:5432/family-story')
-secret = os.getenv('SECRET', 'shh, it\'s a secret')
+db_uri = os.getenv('DATABASE_URI', 'postgres://localhost:5432/family-story')
+secret = os.getenv('SECRET', 'my secret')

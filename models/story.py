@@ -3,7 +3,7 @@ from marshmallow import fields
 from .base import BaseModel, BaseSchema
 # pylint: disable=W0611
 from .user import User
-# from .comment import Comment, CommentSchema
+from .comment import Comment, CommentSchema
 from lib.secure_route import secure_route
 
 
@@ -29,18 +29,3 @@ class StorySchema(ma.ModelSchema, BaseSchema):
         'id', 'username'), exclude=('stories_written'))
     comments = fields.Nested('CommentSchema', many=True, exclude=(
         'story', 'user.stories_written', 'user.user_comment'))
-
-
-class Comment(db.Model, BaseModel):
-
-    __tablename__ = 'comments'
-
-    content = db.Column(db.Text, nullable=False)
-    story_id = db.Column(db.Integer, db.ForeignKey('stories.id'))
-    story = db.relationship('Story', backref='comments')
-
-
-class CommentSchema(ma.ModelSchema, BaseSchema):
-
-    class Meta:
-        model = Comment
