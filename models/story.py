@@ -1,10 +1,10 @@
+'''
+Comments to a story
+'''
 from app import db, ma
 from marshmallow import fields
 from .base import BaseModel, BaseSchema
-# pylint: disable=W0611
 from .user import User
-from .comment import Comment, CommentSchema
-from lib.secure_route import secure_route
 
 
 class Story(db.Model, BaseModel):
@@ -29,3 +29,22 @@ class StorySchema(ma.ModelSchema, BaseSchema):
         'id', 'username'), exclude=('stories_written'))
     comments = fields.Nested('CommentSchema', many=True, exclude=(
         'story', 'user.stories_written', 'user.user_comment'))
+
+
+class Comment(db.Model, BaseModel):
+
+    __tablename__ = 'comments'
+
+    text = db.Column(db.Text, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user = db.relationship('User', backref='user_comment')
+    story_id = db.Column(db.Integer, db.ForeignKey('stories.id'))
+    story = db.relationship('Story', backref='story_comment')
+
+
+class CommentSchema(ma.ModelSchema, BaseSchema):
+    user = fields.Nested('UserSchema')
+    story = fields.Nested('StorySchema')
+
+    class Meta:
+        model = Comment

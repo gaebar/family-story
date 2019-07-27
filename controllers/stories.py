@@ -1,7 +1,6 @@
 from flask import Blueprint, jsonify, request, g
-from models.story import Story, StorySchema
+from models.story import Story, StorySchema, CommentSchema, Comment
 from models.user import UserSchema
-from models.comment import CommentSchema, Comment
 from lib.secure_route import secure_route
 from lib.helpers import is_unique
 

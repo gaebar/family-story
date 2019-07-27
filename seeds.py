@@ -1,7 +1,6 @@
 from app import app, db
-from models.story import Story
+from models.story import Story, Comment
 from models.user import UserSchema
-from models.comment import Comment
 
 
 user_schema = UserSchema()
@@ -67,7 +66,7 @@ with app.app_context():
     comment_one = Comment(
         text='10/10 will read again',
         user=mapping_my_way,
-        # story=origins
+        story=origins
     )
 
     db.session.add(gae)
