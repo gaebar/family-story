@@ -4,7 +4,7 @@ from lib.secure_route import secure_route
 # from models.story import Story, StorySchema
 
 api = Blueprint('auth', __name__)
-user_schema = UserSchema(exclude=('password',))
+user_schema = UserSchema()
 
 # == REGISTER ===
 @api.route('/register', methods=['POST'])
@@ -30,7 +30,7 @@ def login():
         'message': f'Welcome back {user.username}'
     }), 200
 
-# === INDEX USERS ===
+# ===   current user profile ===
 @api.route('/profile', methods=['GET'])
 @secure_route
 def profile():
