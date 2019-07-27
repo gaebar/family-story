@@ -16,9 +16,8 @@ class User(db.Model, BaseModel):
     email = db.Column(db.String(128), nullable=True, unique=True)
     password_hash = db.Column(db.String(128), nullable=True)
 
-
-@hybrid_property
-   def password(self):
+    @hybrid_property
+    def password(self):
         pass
 
     @password.setter
@@ -44,6 +43,7 @@ class User(db.Model, BaseModel):
 
         return token
 
+
 class UserSchema(ma.ModelSchema, BaseSchema):
 
     @validates_schema
@@ -57,8 +57,8 @@ class UserSchema(ma.ModelSchema, BaseSchema):
 
     password = fields.String(required=True)
     password_confirmation = fields.String(required=True)
-    created_stories = fields.Nested('StorySchema', many=True, only=('name', 'id'))
-
+    created_stories = fields.Nested(
+        'StorySchema', many=True, only=('name', 'id'))
 
     class Meta:
         model = User

@@ -11,6 +11,8 @@ psycopg2-binary = "*"
 flask-sqlalchemy = "*"
 marshmallow-sqlalchemy = "*"
 flask-marshmallow = "*"
+flask-bcrypt = "*"
+pyjwt = "*"
 
 [requires]
 python_version = "3.7"

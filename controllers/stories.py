@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request, g
 from models.story import Story, StorySchema
 from models.user import UserSchema
-# from models.comment import CommentSchema, Comment
+from models.comment import CommentSchema, Comment
 from lib.secure_route import secure_route
 from lib.helpers import is_unique
 
@@ -54,8 +54,11 @@ def update(story_id):
         return jsonify({'message': 'Unauthorized'})
     data = request.get_json()
     errors = {}
+    if not is_unique(model=Story, key='name', value=data.get('name')):
+        errors['name'] = errors.get('name', []) + ['Story name already taken']
+        return jsonify(errors), 422
 
-   story, errors = story_schema.load(data, instance=story, partial=True)
+    story, errors = story_schema.load(data, instance=story, partial=True)
     if errors:
         return jsonify(errors), 422
     story.save()
@@ -106,6 +109,7 @@ def comment_create(story_id):
 
 # === DELETE COMMENT ===
 
+
 @api.route('/stories/<int:story_id>/comments/<int:comment_id>', methods=['DELETE'])
 def comment_delete(**kwargs):
     comment = Comment.query.get(kwargs['comment_id'])
@@ -115,6 +119,7 @@ def comment_delete(**kwargs):
     return '', 204
 
 # === EDIT COMMENT ===
+
 
 @api.route('/stories/<int:story_id>/comments/<int:comment_id>', methods=['PUT'])
 @secure_route
