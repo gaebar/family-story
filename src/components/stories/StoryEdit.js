@@ -2,49 +2,49 @@ import React, { Fragment } from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
 
-class GemEdit extends React.Component {
+class StoryEdit extends React.Component {
     constructor() {
         super()
 
-        this.state = { gem: {}, errors: null }
+        this.state = { story: {}, errors: null }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     componentDidMount() {
-        axios.get(`/api/gems/${this.props.match.params.gemId}`, {
+        axios.get(`/api/stories/${this.props.match.params.storyId}`, {
             headers: { 'Authorization': `${Auth.getToken()}` }
         })
-            .then(res => this.setState({ gem: res.data }))
+            .then(res => this.setState({ story: res.data }))
             .catch(err => this.setState({ errors: err.response.data.errors }))
     }
 
     handleChange({ target: { name, value } }) {
-        const gem = { ...this.state.gem, [name]: value }
-        this.setState({ gem })
+        const story = { ...this.state.story, [name]: value }
+        this.setState({ story })
     }
 
     handleSubmit(e) {
         e.preventDefault()
 
-        axios.put(`/api/gems/${this.props.match.params.gemId}`, this.state.data, {
+        axios.put(`/api/stories/${this.props.match.params.storyId}`, this.state.data, {
             headers: { 'Authorization': `${Auth.getToken()}` }
         })
-            .then(() => this.props.history.push('/gems'))
+            .then(() => this.props.history.push('/stories'))
             .catch(err => this.setState({ errors: err.response.data.errors }))
     }
 
     render() {
-        if (!this.state.gem) return null
-        const { gem } = this.state
+        if (!this.state.story) return null
+        const { story } = this.state
         return (
             <section className="section">
-                <div className="container gem-edit">
+                <div className="container story-edit">
                     <Fragment>
-                        <h2 className="title">{gem.name}</h2>
+                        <h2 className="title">{story.name}</h2>
                         <div className="columns">
                             <div className="col-6">
-                                <img src={gem.image} alt={gem.name} className="img-responsive" />
+                                <img src={story.image} alt={story.name} className="img-responsive" />
                             </div>
                             <div className="col-6">
                                 <form onSubmit={this.handleSubmit} className="form-autocomplete">
@@ -52,7 +52,7 @@ class GemEdit extends React.Component {
                                     <input
                                         className={`form-input input-sm ${this.state.errors ? 'is-error' : ''} `}
                                         name="location"
-                                        value={gem.location || ''}
+                                        value={story.location || ''}
                                         placeholder="where is this?"
                                         onChange={this.handleChange}
                                     />
@@ -62,7 +62,7 @@ class GemEdit extends React.Component {
                                     <textarea
                                         className={`form-input input-sm ${this.state.errors ? 'is-error' : ''} `}
                                         name="caption"
-                                        value={gem.caption || ''}
+                                        value={story.caption || ''}
                                         rows="5"
                                         placeholder="caption here"
                                         onChange={this.handleChange}
@@ -75,7 +75,7 @@ class GemEdit extends React.Component {
                                         <select
                                             className={`form-select ${this.state.errors ? 'is-error' : ''} `}
                                             name="category"
-                                            value={gem.category || ''}
+                                            value={story.category || ''}
                                             onChange={this.handleChange}
                                         >
                                             <option>Choose an option</option>
@@ -88,7 +88,7 @@ class GemEdit extends React.Component {
                                     {this.state.errors && <small className="help is-danger">{this.state.errors.category}</small>}
                                     <br />
                                     <div className="text-center">
-                                        <button type="submit" className="btn btn-primary input-group-btn input-sm gemeditsubmit">Submit</button>
+                                        <button type="submit" className="btn btn-primary input-group-btn input-sm storyeditsubmit">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -100,4 +100,4 @@ class GemEdit extends React.Component {
     }
 }
 
-export default GemEdit
+export default StoryEdit

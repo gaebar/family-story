@@ -1,10 +1,10 @@
 import React from 'react'
 import axios from 'axios'
-import Gem from './Gem'
+import Story from './Story'
 import Auth from '../../lib/Auth'
 import { Link } from 'react-router-dom'
 
-class Gems extends React.Component {
+class Stories extends React.Component {
     constructor() {
         super()
 
@@ -13,7 +13,7 @@ class Gems extends React.Component {
     }
 
     getData() {
-        axios.get('/api/gems', {
+        axios.get('/api/stories', {
             headers: { Authorization: `Bearer ${Auth.getToken()}` }
         })
             .then(res => this.setState({ data: res.data }))
@@ -29,16 +29,16 @@ class Gems extends React.Component {
         this.setState({ filterCategory: category, checked: n })
     }
 
-    filterGems() {
+    filterStories() {
         const regexp = new RegExp(this.state.filterCategory, 'i')
-        return this.state.data.filter(gem => regexp.test(gem.category))
+        return this.state.data.filter(story => regexp.test(story.category))
     }
 
     render() {
         return (
-            <div className="gems-index">
+            <div className="stories-index">
                 <div>
-                    <h1 className="text-center">Hidden Gems</h1>
+                    <h1 className="text-center">Hidden Stories</h1>
                     <div className="text-center">
                         <p>Watch with glittering eyes the whole world around you.</p>
                         <cite>- Ronald Dahl</cite>
@@ -51,8 +51,8 @@ class Gems extends React.Component {
                 {
                     this.state.data &&
                     <div>
-                        <div className="gems-nav">
-                            <Link to="/gems/new" className="float-right">💎 Post a Gem</Link>
+                        <div className="stories-nav">
+                            <Link to="/stories/new" className="float-right">💎 Post a Story</Link>
                             <div className="filter">
                                 <input
                                     type="radio"
@@ -139,10 +139,10 @@ class Gems extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <div className='columns gems-background multiline is-mobile'>
+                        <div className='columns stories-background multiline is-mobile'>
                             {
-                                this.filterGems().map(gem => {
-                                    return <Gem key={gem._id} {...gem} />
+                                this.filterStories().map(story => {
+                                    return <Story key={story._id} {...story} />
                                 })
                             }
                         </div>
@@ -155,4 +155,4 @@ class Gems extends React.Component {
     }
 }
 
-export default Gems
+export default Stories

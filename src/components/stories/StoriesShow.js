@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom'
 import { MdClear } from 'react-icons/md'
 import { TiPencil } from 'react-icons/ti'
 
-class GemsShow extends React.Component {
+class StoriesShow extends React.Component {
     constructor() {
         super()
 
-        this.state = { gem: null, comment: {}, user: {} }
+        this.state = { story: null, comment: {}, user: {} }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleCommentDelete = this.handleCommentDelete.bind(this)
@@ -22,15 +22,15 @@ class GemsShow extends React.Component {
     }
 
     getData() {
-        axios.get(`/api/gems/${this.props.match.params.gemId}`, {
+        axios.get(`/api/stories/${this.props.match.params.storyId}`, {
             headers: { 'Authorization': `${Auth.getToken()}` }
         })
-            .then(res => this.setState({ gem: res.data, comment: {} }))
+            .then(res => this.setState({ story: res.data, comment: {} }))
             .catch(err => console.log(err))
     }
 
     addLike() {
-        axios.get(`/api/gems/${this.props.match.params.gemId}/likes`, {
+        axios.get(`/api/stories/${this.props.match.params.storyId}/likes`, {
             headers: { Authorization: `Bearer ${Auth.getToken()}` }
         })
             .then(() => this.getData())
@@ -45,7 +45,7 @@ class GemsShow extends React.Component {
     handleSubmit(e) {
         e.preventDefault()
 
-        axios.post(`/api/gems/${this.props.match.params.gemId}/comments`, this.state.comment, {
+        axios.post(`/api/stories/${this.props.match.params.storyId}/comments`, this.state.comment, {
             headers: { 'Authorization': `${Auth.getToken()}` }
         })
             .then(() => this.getData())
@@ -56,11 +56,11 @@ class GemsShow extends React.Component {
         return Auth.getPayload().sub === comment.user._id
     }
     isOwner() {
-        return Auth.getPayload().sub === this.state.gem.user._id
+        return Auth.getPayload().sub === this.state.story.user._id
     }
 
     handleCommentDelete(comment) {
-        axios.delete(`/api/gems/${this.props.match.params.gemId}/comments/${comment._id}`, {
+        axios.delete(`/api/stories/${this.props.match.params.storyId}/comments/${comment._id}`, {
             headers: { 'Authorization': Auth.getToken() }
         })
             .then(() => this.getData())
@@ -68,41 +68,41 @@ class GemsShow extends React.Component {
     }
 
     handleDelete() {
-        axios.delete(`/api/gems/${this.props.match.params.gemId}`, {
+        axios.delete(`/api/stories/${this.props.match.params.storyId}`, {
             headers: { 'Authorization': Auth.getToken() }
         })
-            .then(() => this.props.history.push('/gems'))
+            .then(() => this.props.history.push('/stories'))
             .catch(err => console.log(err))
     }
 
     render() {
-        if (!this.state.gem) return null
-        const { gem } = this.state
+        if (!this.state.story) return null
+        const { story } = this.state
         return (
-            <section className="section gemshow">
+            <section className="section storieshow">
                 <div className="container">
                     <Fragment>
-                        <h2 className="title">{gem.name}</h2>
+                        <h2 className="title">{story.name}</h2>
                         <div className="columns">
                             <div className="column is-half">
                                 <figure className="image">
-                                    <img className="gemshowimage" src={gem.image} alt={gem.name} />
+                                    <img className="storieshowimage" src={story.image} alt={story.name} />
                                 </figure>
                             </div>
                             <div className="column is-half">
                                 <div className="columns">
                                     <div className="col-6">
-                                        <h4>{gem.location}</h4>
+                                        <h4>{story.location}</h4>
                                     </div>
                                     <div className="col-3">
-                                        <div className="chip">{gem.category}</div>
+                                        <div className="chip">{story.category}</div>
                                     </div>
                                 </div>
                                 <div className="columns">
-                                    <p className="text-normal">Posted by <Link to={`/users/${gem.user._id}`} >{gem.user.username}</Link></p>
+                                    <p className="text-normal">Posted by <Link to={`/users/${story.user._id}`} >{story.user.username}</Link></p>
                                     {this.isOwner() && <Link
                                         className="btn btn-link btn-sm"
-                                        to={`/gems/${this.props.match.params.gemId}/edit`}
+                                        to={`/stories/${this.props.match.params.storyId}/edit`}
                                     >
                                         <TiPencil />
                                     </Link>
@@ -113,14 +113,14 @@ class GemsShow extends React.Component {
                                         </button>
                                     }
                                 </div>
-                                <div className='gem-likes'>
+                                <div className='story-likes'>
                                     <button className="btn btn-link btn-lg" onClick={this.addLike} >💎</button>
-                                    <p className="text-bold">{gem.likes.length} likes</p>
+                                    <p className="text-bold">{story.likes.length} likes</p>
                                 </div>
-                                <p>{gem.caption}</p>
+                                <p>{story.caption}</p>
                                 <hr />
-                                {gem.comments.map(comment => (
-                                    <div key={comment._id} className="gem-comment">
+                                {story.comments.map(comment => (
+                                    <div key={comment._id} className="story-comment">
                                         <div className="text text-bold">
                                             {comment.text}
                                         </div>
@@ -153,7 +153,7 @@ class GemsShow extends React.Component {
                                         <button className="btn btn-primary btn-sm" type="submit">Comment</button>
                                     </form>}
 
-                                <Link to="/gems" className="float-right">Find More Gems</Link>
+                                <Link to="/stories" className="float-right">Find More Stories</Link>
                             </div>
                         </div>
                     </Fragment>
@@ -163,4 +163,4 @@ class GemsShow extends React.Component {
     }
 }
 
-export default GemsShow
+export default StoriesShow

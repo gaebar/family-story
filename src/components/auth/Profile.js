@@ -10,17 +10,17 @@ class Profile extends React.Component {
         this.state = { user: null, stories: [] }
     }
 
-    getUserGems() {
-        axios.get('/api/gems', {
+    getUserStories() {
+        axios.get('/api/stories', {
             headers: { Authorization: `Bearer ${Auth.getToken()}` }
         })
             .then(res => {
-                const userGems = res.data.filter(gem => gem.user._id === this.state.user._id)
-                const likedGems = res.data.filter(gem => {
-                    const array = gem.likes.filter(like => like.user === this.state.user._id)
+                const userStories = res.data.filter(story => story.user._id === this.state.user._id)
+                const likedStories = res.data.filter(story => {
+                    const array = story.likes.filter(like => like.user === this.state.user._id)
                     return array[0]
                 })
-                return this.setState({ gems: userGems, likedGems: likedGems })
+                return this.setState({ stories: userStories, likedStories: likedStories })
             })
             .catch(err => console.log(err))
     }
@@ -30,7 +30,7 @@ class Profile extends React.Component {
             headers: { Authorization: `Bearer ${Auth.getToken()}` }
         })
             .then(res => this.setState({ user: res.data }))
-            .then(() => this.getUserGems())
+            .then(() => this.getUserStories())
             .catch(err => console.log(err))
     }
 
@@ -86,11 +86,11 @@ class Profile extends React.Component {
                                         </div>
                                     </div>
                                     {
-                                        this.state.gems.length > 0 &&
+                                        this.state.stories.length > 0 &&
                                         <p>
-                                            <span> 💎  {this.state.gems.length} </span>
+                                            <span> 💎  {this.state.stories.length} </span>
                                             {
-                                                this.state.gems.length > 1 ? 'Gems' : 'Gem'
+                                                this.state.stories.length > 1 ? 'Stories' : 'Story'
                                             }
                                         </p>
                                     }
@@ -101,7 +101,7 @@ class Profile extends React.Component {
                             <hr className="divider" />
                             <div className="columns col-oneline profile-nav">
                                 <div className="column col-5">
-                                    <Link to="/gems">Hidden gems</Link>
+                                    <Link to="/stories">Hidden stories</Link>
                                 </div>
                                 <div className="divider text-center col-2" data-content="OR"></div>
                                 <div className="column col-5">
@@ -109,42 +109,42 @@ class Profile extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <div className='user-gems'>
+                        <div className='user-stories'>
                             {
-                                this.state.gems.length === 0 && this.state.likedGems.length === 0 &&
+                                this.state.stories.length === 0 && this.state.likedStories.length === 0 &&
                                 <div className="empty">
                                     <div className="empty-icon">
                                         <i className="icon icon-people"></i>
                                     </div>
                                     <p className="empty-title h5">Nothing to see here</p>
-                                    <p className="empty-subtitle">Looks like you have not posted or liked a hidden gem yet</p>
-                                    <p className="empty-subtitle">No worries, check out other hidden gems here:</p>
+                                    <p className="empty-subtitle">Looks like you have not posted or liked a hidden story yet</p>
+                                    <p className="empty-subtitle">No worries, check out other hidden stories here:</p>
                                     <div className="empty-action">
-                                        <Link className="btn btn-primary" to="/gems"> 💎 </Link>
+                                        <Link className="btn btn-primary" to="/stories"> 💎 </Link>
                                     </div>
                                 </div>
                             }
                             {
-                                this.state.gems.length > 0 &&
+                                this.state.stories.length > 0 &&
                                 <div>
-                                    <h3>Your hidden gems:</h3>
-                                    <div className='gems-list'>
+                                    <h3>Your hidden stories:</h3>
+                                    <div className='stories-list'>
                                         {
-                                            this.state.gems.map(gem => {
-                                                return <Link to={`/gems/${gem._id}`} key={gem._id}><img src={gem.image} /></Link>
+                                            this.state.stories.map(story => {
+                                                return <Link to={`/stories/${story._id}`} key={story._id}><img src={story.image} /></Link>
                                             })
                                         }
                                     </div>
                                 </div>
                             }
                             {
-                                this.state.likedGems.length > 0 &&
+                                this.state.likedStories.length > 0 &&
                                 <div>
-                                    <h3>Hidden gems you liked:</h3>
-                                    <div className='gems-list'>
+                                    <h3>Hidden stories you liked:</h3>
+                                    <div className='stories-list'>
                                         {
-                                            this.state.likedGems.map(gem => {
-                                                return <Link to={`/gems/${gem._id}`} key={gem._id}><img src={gem.image} /></Link>
+                                            this.state.likedStories.map(story => {
+                                                return <Link to={`/stories/${story._id}`} key={story._id}><img src={story.image} /></Link>
                                             })
                                         }
                                     </div>
