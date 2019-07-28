@@ -79,14 +79,14 @@ class StoriesShow extends React.Component {
         if (!this.state.story) return null
         const { story } = this.state
         return (
-            <section className="section storieshow">
+            <section className="section storyshow">
                 <div className="container">
                     <Fragment>
                         <h2 className="title">{story.name}</h2>
                         <div className="columns">
                             <div className="column is-half">
                                 <figure className="image">
-                                    <img className="storieshowimage" src={story.image} alt={story.name} />
+                                    <img className="storyshowimage" src={story.image} alt={story.name} />
                                 </figure>
                             </div>
                             <div className="column is-half">

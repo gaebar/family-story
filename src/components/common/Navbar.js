@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
-import { FaLeaf } from 'react-icons/gi'
+import { FaLeaf } from 'react-icons/fa'
 
 class Navbar extends React.Component {
     constructor() {
@@ -45,7 +45,7 @@ class Navbar extends React.Component {
         return (
             <header className="navbar">
                 <section className="navbar-section">
-                    <Link to="/" className="title"><GiIsland /><span>  </span>Family Srory</Link>
+                    <Link to="/" className="title"><FaLeaf /><span>  </span>Family Srory</Link>
                 </section>
                 {
                     Auth.isAuthenticated() &&
