@@ -4,6 +4,7 @@ Comments to a story
 from app import db, ma
 from marshmallow import fields
 from .base import BaseModel, BaseSchema
+# pylint: disable=W0611
 from .user import User
 
 

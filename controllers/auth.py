@@ -17,7 +17,7 @@ def register():
     return jsonify({'message': 'Registration Successful'}), 201
 
 # === LOGIN ===
-@api.route('/login', methods=['POST'])
+@api.route('/', methods=['POST'])
 def login():
     data = request.get_json()
     if not data:
