@@ -7,20 +7,20 @@ $subtitle-size: 28px;
 $subtitle-second-size: 22px;
 $paragraph-size: 18px;
 
-.gemshow {
+.storyshow {
   margin:30px 10px;
   .btn-link {
     color: $yellow;
   }
 }
 
-.gemshowimage {
+.storyshowimage {
   height: auto;
   width: 50vw;
   transform: scale(1);
 }
 
-.gem-likes {
+.story-likes {
   display: flex;
   align-items: center;
   p {
@@ -28,7 +28,7 @@ $paragraph-size: 18px;
   }
 }
 
-.gem-comment {
+.story-comment {
   background-color: #f5f5f5;
   margin: 20px;
   padding: 10px;
