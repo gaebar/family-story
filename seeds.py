@@ -13,7 +13,9 @@ with app.app_context():
         'username': 'gae',
         'email': 'gae@email.com',
         'password': 'pass',
-        'password_confirmation': 'pass'
+        'password_confirmation': 'pass',
+        'image_url': 'https://www.shareicon.net/data/128x128/2016/08/18/810220_user_512x512.png',
+        'bio': 'Here I am!'
     })
 
     if errors:
@@ -23,7 +25,9 @@ with app.app_context():
         'username': 'mapping_my_way',
         'email': 'wes@email.com',
         'password': 'pass',
-        'password_confirmation': 'pass'
+        'password_confirmation': 'pass',
+        'image_url': 'https://www.shareicon.net/data/128x128/2016/08/18/810211_user_512x512.png',
+        'bio': 'I love cake'
     })
 
     if errors:
@@ -33,7 +37,9 @@ with app.app_context():
         'username': 'jack',
         'email': 'jack@email.com',
         'password': 'pass',
-        'password_confirmation': 'pass'
+        'password_confirmation': 'pass',
+        'image_url': 'https://www.shareicon.net/data/128x128/2016/08/18/810198_user_512x512.png',
+        'bio': 'Cheese lover!'
     })
 
     if errors:

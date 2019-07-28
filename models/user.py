@@ -15,6 +15,8 @@ class User(db.Model, BaseModel):
     username = db.Column(db.String(20), nullable=False, unique=True)
     email = db.Column(db.String(128), nullable=True, unique=True)
     password_hash = db.Column(db.String(128), nullable=True)
+    image_url = db.Column(db.String(256), nullable=False)
+    bio = db.Column(db.String(512), nullable=False)
 
     @hybrid_property
     def password(self):
@@ -46,6 +48,8 @@ class User(db.Model, BaseModel):
 
 class UserSchema(ma.ModelSchema, BaseSchema):
 
+    email = fields.Email()
+
     @validates_schema
     # pylint: disable=R0201
     def check_passwords_match(self, data):
@@ -55,8 +59,14 @@ class UserSchema(ma.ModelSchema, BaseSchema):
                 'password_confirmation'
             )
 
+    # todo: add checks to prevent inserting duplicate usernames
+
     password = fields.String(required=True)
     password_confirmation = fields.String(required=True)
+
+    image_url = fields.String(required=True)
+    bio = fields.String(required=True)
+
     created_stories = fields.Nested(
         'StorySchema', many=True, only=('name', 'id'))
 

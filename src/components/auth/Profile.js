@@ -42,10 +42,6 @@ class Profile extends React.Component {
         return (
             <div>
                 {
-                    !this.state.user &&
-                    <img src='https://media2.giphy.com/media/mFHVvtrf1n3qm3pdvr/giphy.gif?cid=790b76115d25fc155230413373f1d5d2&rid=giphy.gif' />
-                }
-                {
                     this.state.user &&
                     <div className='user-page'>
                         <div className="columns user-header">

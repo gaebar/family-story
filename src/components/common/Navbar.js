@@ -45,7 +45,7 @@ class Navbar extends React.Component {
         return (
             <header className="navbar">
                 <section className="navbar-section">
-                    <Link to="/" className="title"><FaLeaf /><span>  </span>Family Srory</Link>
+                    <Link to="/" className="title"><FaLeaf /><span>  </span>Family Story</Link>
                 </section>
                 {
                     Auth.isAuthenticated() &&

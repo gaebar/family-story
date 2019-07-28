@@ -30,6 +30,7 @@ class Stories extends React.Component {
     }
 
     filterStories() {
+        debugger
         const regexp = new RegExp(this.state.filterCategory, 'i')
         return this.state.data.filter(story => regexp.test(story.category))
     }
@@ -44,15 +45,15 @@ class Stories extends React.Component {
                         <cite>- Ronald Dahl</cite>
                     </div>
                 </div>
-                {
+                {/* {
                     !this.state.data &&
                     <img src='https://media2.giphy.com/media/mFHVvtrf1n3qm3pdvr/giphy.gif?cid=790b76115d25fc155230413373f1d5d2&rid=giphy.gif' />
-                }
+                } */}
                 {
                     this.state.data &&
                     <div>
                         <div className="stories-nav">
-                            <Link to="/stories/new" className="float-right">💎 Post a Story</Link>
+                            <Link to="/stories/new" className="float-right"> Post a Story</Link>
                             <div className="filter">
                                 <input
                                     type="radio"
@@ -142,7 +143,8 @@ class Stories extends React.Component {
                         <div className='columns stories-background multiline is-mobile'>
                             {
                                 this.filterStories().map(story => {
-                                    return <Story key={story._id} {...story} />
+                                    console.log(story)
+                                    return <Story key={story.id} {...story} />
                                 })
                             }
                         </div>

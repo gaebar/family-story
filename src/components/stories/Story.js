@@ -1,14 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Story = ({ image, location, user, _id }) => {
+const Story = ({ creator, id, image_url }) => {
     return (
         <div className="column col-3 col-lg-6 col-sm-12 story-card">
 
             <div className="card story-card">
-                <Link to={`/stories/${_id}`} >
+                <Link to={`/stories/${id}`} >
                     <div className="card-image">
-                        <img src={image} className="img-responsive" />
+                        <img src={image_url} className="img-responsive" />
                     </div>
                     <div className="card-header">
                         <div className="card-title h5">{location}</div>
@@ -17,10 +17,9 @@ const Story = ({ image, location, user, _id }) => {
                 <div className="card-body">
                     <div className="card-subtitle text-gray">
                         <div className="chip">
-                            <Link to={`/users/${user._id}`} aria-label="Close" role="button">
-                                <img src={user.image} className="avatar avatar-sm" />
-                                {user.username}
-                                <span> {user.userType === 'Local' ? ' 🇻🇳 ' : ' ✈️ '} </span>
+                            <Link to={`/users/${creator.id}`} aria-label="Close" role="button">
+                                <img src={creator.image_url} className="avatar avatar-sm" />
+                                {creator.username}
                             </Link>
                         </div>
                     </div>
