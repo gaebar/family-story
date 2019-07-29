@@ -79,7 +79,7 @@ class Register extends React.Component {
                                 <label className="form-label" htmlFor="image">Your Details</label>
                                 <input
                                     className={`form-input input-sm ${this.state.errors.image ? 'is-error' : ''} `}
-                                    name="image_url"
+                                    name="image"
                                     placeholder="Link to profile picture"
                                     onChange={this.handleChange}
                                 />

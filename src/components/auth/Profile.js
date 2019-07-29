@@ -16,10 +16,10 @@ class Profile extends React.Component {
         })
             .then(res => {
                 const userStories = res.data.filter(story => story.user._id === this.state.user._id)
-                // const likedStories = res.data.filter(story => {
-                //     const array = story.likes.filter(like => like.user === this.state.user._id)
-                //     return array[0]
-                // })
+                const likedStories = res.data.filter(story => {
+                    const array = story.likes.filter(like => like.user === this.state.user._id)
+                    return array[0]
+                })
                 return this.setState({ stories: userStories })
             })
             .catch(err => console.log(err))
@@ -41,6 +41,10 @@ class Profile extends React.Component {
     render() {
         return (
             <div>
+                {/* {
+                    !this.state.user &&
+                    <img src='https://media2.giphy.com/media/mFHVvtrf1n3qm3pdvr/giphy.gif?cid=790b76115d25fc155230413373f1d5d2&rid=giphy.gif' />
+                } */}
                 {
                     this.state.user &&
                     <div className='user-page'>
@@ -49,9 +53,9 @@ class Profile extends React.Component {
                                 <img src={this.state.user.image} className="profile-pic" />
                             </div>
                             <div className="column col-7">
-                                <h2>{this.state.user.username} {this.state.user.userType === 'Tourist' ? <span>✈️ </span> : <span>🇻🇳 </span>}</h2>
+                                <h2>{this.state.user.username}</h2>
                                 <br />
-                                <p>{this.state.user.text}</p>
+                                <p>{this.state.user.bio}</p>
                                 <div className='user-info'>
                                     <div className="popover popover-bottom"><a className="followers-btn" href="#popovers">{this.state.user.followers.length} Followers</a>
                                         <div className="popover-container">
@@ -84,7 +88,7 @@ class Profile extends React.Component {
                                     {
                                         this.state.stories.length > 0 &&
                                         <p>
-                                            <span> ✏️  {this.state.stories.length} </span>
+                                            <span> ✏️ {this.state.stories.length} </span>
                                             {
                                                 this.state.stories.length > 1 ? 'Stories' : 'Story'
                                             }

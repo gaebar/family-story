@@ -55,13 +55,13 @@ class Navbar extends React.Component {
                             <div className="dropdown dropdown-right">
                                 <a href="#" className="btn btn-link dropdown-toggle" tabIndex="0">
                                     <div className="chip chip-link">
-                                        <img src={this.state.user.image} className="avatar avatar-sm" />
+                                        <img src={this.state.user.image_url} className="avatar avatar-sm" />
                                         {this.state.user.username}
                                     </div>
                                     <i className="icon icon-caret"></i>
                                 </a>
                                 <ul className="menu nav-menu">
-                                    <li><Link to="/stories">Find new Stories</Link></li>
+                                    <li><Link to="/stories">Read new Stories</Link></li>
                                     <li><Link to="/profile">Your Profile</Link></li>
                                     <hr />
                                     <li><a onClick={this.logout} className="c-hand">Logout</a></li>

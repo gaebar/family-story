@@ -113,10 +113,10 @@ class StoriesShow extends React.Component {
                                         </button>
                                     }
                                 </div>
-                                <div className='story-likes'>
-                                    <button className="btn btn-link btn-lg" onClick={this.addLike} >💎</button>
+                                {/* <div className='story-likes'>
+                                    <button className="btn btn-link btn-lg" onClick={this.addLike} >✏️</button>
                                     <p className="text-bold">{story.likes.length} likes</p>
-                                </div>
+                                </div> */}
                                 <p>{story.caption}</p>
                                 <hr />
                                 {story.comments.map(comment => (

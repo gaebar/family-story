@@ -48,10 +48,10 @@ class StoryCreate extends React.Component {
                                 <input
                                     className={`form-input input-sm ${this.state.errors ? 'is-error' : ''} `}
                                     name="image"
-                                    placeholder="image url"
+                                    placeholder="image_url"
                                     onChange={this.handleChange}
                                 />
-                                {this.state.errors && <small className="help is-danger">{this.state.errors.image}</small>}
+                                {this.state.errors && <small className="help is-danger">{this.state.errors.image_url}</small>}
                                 <label className="form-label" htmlFor="caption">Caption</label>
                                 <input
                                     className={`form-input input-sm ${this.state.errors ? 'is-error' : ''} `}
