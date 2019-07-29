@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import 'spectre.css'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { Redirect } from 'react-router'
 import './styles/style.scss'
 import Navbar from './components/common/Navbar'
 import Footer from './components/common/Footer'
@@ -11,9 +12,11 @@ import Register from './components/auth/Register'
 import Profile from './components/auth/Profile'
 
 import StoryCreate from './components/stories/StoryCreate'
-import StoriesShow from './components/stories/StoriesShow'
+import Story from './components/stories/Story'
 import Stories from './components/stories/Stories'
 import StoryEdit from './components/stories/StoryEdit'
+
+import Auth from './lib/Auth'
 
 const App = () => {
     return (
@@ -23,11 +26,17 @@ const App = () => {
                 <Switch>
                     <Route path='/stories/new' component={StoryCreate} />
                     <Route path='/stories/:storyId/edit' component={StoryEdit} />
-                    <Route path='/stories/:storyId' component={StoriesShow} />
+                    <Route path='/stories/:storyId' component={Story} />
                     <Route path='/stories' component={Stories} />
                     <Route path='/profile' component={Profile} />
                     <Route path='/register' component={Register} />
-                    <Route exact path='/' component={Login} />
+                    <Route exact path="/" render={() => (
+                        Auth.isAuthenticated() ? (
+                            <Redirect to="/profile" />
+                        ) : (
+                                <Login />
+                            )
+                    )} />
                 </Switch>
                 <Footer />
             </main>
