@@ -4,7 +4,7 @@ import Auth from '../../lib/Auth'
 import { Link } from 'react-router-dom'
 import { MdClear } from 'react-icons/md'
 
-class Story extends React.Component {
+class StoriesShow extends React.Component {
     constructor() {
         super()
 
@@ -84,4 +84,4 @@ class Story extends React.Component {
     }
 }
 
-export default Story
+export default StoriesShow

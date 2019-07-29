@@ -12,7 +12,7 @@ import Register from './components/auth/Register'
 import Profile from './components/auth/Profile'
 
 import StoryCreate from './components/stories/StoryCreate'
-import Story from './components/stories/Story'
+import StoriesShow from './components/stories/StoriesShow'
 import Stories from './components/stories/Stories'
 import StoryEdit from './components/stories/StoryEdit'
 
@@ -26,7 +26,7 @@ const App = () => {
                 <Switch>
                     <Route path='/stories/new' component={StoryCreate} />
                     <Route path='/stories/:storyId/edit' component={StoryEdit} />
-                    <Route path='/stories/:storyId' component={Story} />
+                    <Route path='/stories/:storyId' component={StoriesShow} />
                     <Route path='/stories' component={Stories} />
                     <Route path='/profile' component={Profile} />
                     <Route path='/register' component={Register} />

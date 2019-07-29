@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import Story from './Story'
+import StoriesShow from './StoriesShow'
 import Auth from '../../lib/Auth'
 import { Link } from 'react-router-dom'
 
