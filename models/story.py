@@ -19,6 +19,7 @@ class Story(db.Model, BaseModel):
     finished = db.Column(db.Boolean, default=True)
     creator_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     creator = db.relationship('User', backref='stories_written')
+    image_url = db.Column(db.String(256), nullable=False)
 
 
 class StorySchema(ma.ModelSchema, BaseSchema):
@@ -30,6 +31,8 @@ class StorySchema(ma.ModelSchema, BaseSchema):
         'id', 'username'), exclude=('stories_written'))
     comments = fields.Nested('CommentSchema', many=True, exclude=(
         'story', 'user.stories_written', 'user.user_comment'))
+
+    image_url = fields.String(required=True)
 
 
 class Comment(db.Model, BaseModel):

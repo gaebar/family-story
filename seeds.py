@@ -66,6 +66,7 @@ with app.app_context():
         description='Collecting our German naturalisation certificates this morning!',
         content=first_story,
         genre='history',
+        image_url='https://jewishculture.illinois.edu/sites/default/files/inline-images/IMG_0056.JPG',
         creator=gae
     )
 
