@@ -50,15 +50,13 @@ class Navbar extends React.Component {
                 {
                     Auth.isAuthenticated() &&
                     <section className="navbar-section">
+                        {this.state.user.username}
                         {
                             this.state.user.username &&
                             <div className="dropdown dropdown-right">
                                 <a href="#" className="btn btn-link dropdown-toggle" tabIndex="0">
-                                    <div className="chip chip-link">
-                                        <img src={this.state.user.image_url} className="avatar avatar-sm" />
-                                        {this.state.user.username}
-                                    </div>
-                                    <i className="icon icon-caret"></i>
+
+                                    <i className="icon icon-menu"></i>
                                 </a>
                                 <ul className="menu nav-menu">
                                     <li><Link to="/stories">Read New Stories</Link></li>
