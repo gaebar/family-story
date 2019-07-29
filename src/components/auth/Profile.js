@@ -16,11 +16,11 @@ class Profile extends React.Component {
         })
             .then(res => {
                 const userStories = res.data.filter(story => story.user._id === this.state.user._id)
-                const likedStories = res.data.filter(story => {
-                    const array = story.likes.filter(like => like.user === this.state.user._id)
-                    return array[0]
-                })
-                return this.setState({ stories: userStories, likedStories: likedStories })
+                // const likedStories = res.data.filter(story => {
+                //     const array = story.likes.filter(like => like.user === this.state.user._id)
+                //     return array[0]
+                // })
+                return this.setState({ stories: userStories })
             })
             .catch(err => console.log(err))
     }
@@ -84,7 +84,7 @@ class Profile extends React.Component {
                                     {
                                         this.state.stories.length > 0 &&
                                         <p>
-                                            <span> 💎  {this.state.stories.length} </span>
+                                            <span> ✏️  {this.state.stories.length} </span>
                                             {
                                                 this.state.stories.length > 1 ? 'Stories' : 'Story'
                                             }
@@ -97,7 +97,7 @@ class Profile extends React.Component {
                             <hr className="divider" />
                             <div className="columns col-oneline profile-nav">
                                 <div className="column col-5">
-                                    <Link to="/stories">Hidden stories</Link>
+                                    <Link to="/stories">Family stories</Link>
                                 </div>
                                 <div className="divider text-center col-2" data-content="OR"></div>
                                 <div className="column col-5">
@@ -113,17 +113,17 @@ class Profile extends React.Component {
                                         <i className="icon icon-people"></i>
                                     </div>
                                     <p className="empty-title h5">Nothing to see here</p>
-                                    <p className="empty-subtitle">Looks like you have not posted or liked a hidden story yet</p>
-                                    <p className="empty-subtitle">No worries, check out other hidden stories here:</p>
+                                    <p className="empty-subtitle">Looks like you have not posted or liked a family story yet</p>
+                                    <p className="empty-subtitle">No worries, check out other family stories here:</p>
                                     <div className="empty-action">
-                                        <Link className="btn btn-primary" to="/stories"> 💎 </Link>
+                                        <Link className="btn btn-primary" to="/stories"> ✏️ </Link>
                                     </div>
                                 </div>
                             }
                             {
                                 this.state.stories.length > 0 &&
                                 <div>
-                                    <h3>Your hidden stories:</h3>
+                                    <h3>Your family stories:</h3>
                                     <div className='stories-list'>
                                         {
                                             this.state.stories.map(story => {
@@ -136,7 +136,7 @@ class Profile extends React.Component {
                             {
                                 this.state.likedStories.length > 0 &&
                                 <div>
-                                    <h3>Hidden stories you liked:</h3>
+                                    <h3>Family stories you liked:</h3>
                                     <div className='stories-list'>
                                         {
                                             this.state.likedStories.map(story => {

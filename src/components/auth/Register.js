@@ -88,7 +88,7 @@ class Register extends React.Component {
 
                                     <textarea
                                         className={`form-input ${this.state.errors.text ? 'is-error' : ''} `}
-                                        placeholder="Introduce yourself!"
+                                        placeholder="Tell Us About Yourself"
                                         rows="3"
                                         name="bio"
                                         onChange={this.handleChange}>

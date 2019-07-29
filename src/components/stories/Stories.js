@@ -39,7 +39,7 @@ class Stories extends React.Component {
         return (
             <div className="stories-index">
                 <div>
-                    <h1 className="text-center">Hidden Stories</h1>
+                    <h1 className="text-center">Family Stories</h1>
                     <div className="text-center">
                         <p>Watch with glittering eyes the whole world around you.</p>
                         <cite>- Ronald Dahl</cite>
