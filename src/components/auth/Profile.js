@@ -16,10 +16,10 @@ class Profile extends React.Component {
         })
             .then(res => {
                 const userStories = res.data.filter(story => story.user._id === this.state.user._id)
-                const likedStories = res.data.filter(story => {
-                    const array = story.likes.filter(like => like.user === this.state.user._id)
-                    return array[0]
-                })
+                // const likedStories = res.data.filter(story => {
+                //     const array = story.likes.filter(like => like.user === this.state.user._id)
+                //     return array[0]
+                // })
                 return this.setState({ stories: userStories })
             })
             .catch(err => console.log(err))
@@ -41,22 +41,36 @@ class Profile extends React.Component {
     render() {
         return (
             <div>
-                {/* {
-                    !this.state.user &&
-                    <img src='https://media2.giphy.com/media/mFHVvtrf1n3qm3pdvr/giphy.gif?cid=790b76115d25fc155230413373f1d5d2&rid=giphy.gif' />
-                } */}
                 {
                     this.state.user &&
                     <div className='user-page'>
                         <div className="columns user-header">
                             <div className="column col-5">
-                                <img src={this.state.user.image} className="profile-pic" />
+                                <img src={this.state.user.image_url} className="profile-pic" />
                             </div>
                             <div className="column col-7">
                                 <h2>{this.state.user.username}</h2>
                                 <br />
                                 <p>{this.state.user.bio}</p>
-                                <div className='user-info'>
+                            </div>
+                        </div>
+
+                    </div >
+
+                }
+            </div >
+
+        )
+    }
+}
+
+export default Profile
+
+
+
+
+
+{/* <div className='user-info'>
                                     <div className="popover popover-bottom"><a className="followers-btn" href="#popovers">{this.state.user.followers.length} Followers</a>
                                         <div className="popover-container">
                                             <div className="card">
@@ -64,8 +78,8 @@ class Profile extends React.Component {
                                                     <div className="card-title h5">Followers</div>
                                                     <div className="card-subtitle text-gray">Check out who follows you </div>
                                                 </div>
-                                                <div className="card-body">
-                                                    {
+                                                <div className="card-body"> */}
+{/* {
                                                         this.state.user.followers.map(follower => {
                                                             return <div key={follower.user._id} className="tile">
                                                                 <Link to={`/users/${follower.user._id}`}>
@@ -79,13 +93,13 @@ class Profile extends React.Component {
                                                                     </div>
                                                                 </Link>
                                                             </div>
-                                                        })
-                                                    }
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {
+                                                        }) */}
+{/* } */ }
+{/* </div>
+                        </div>
+                    </div> */}
+{/* // </div> */ }
+{/* {
                                         this.state.stories.length > 0 &&
                                         <p>
                                             <span> ✏️ {this.state.stories.length} </span>
@@ -93,23 +107,27 @@ class Profile extends React.Component {
                                                 this.state.stories.length > 1 ? 'Stories' : 'Story'
                                             }
                                         </p>
-                                    }
-                                </div>
-                            </div>
-                        </div>
+                                    } */}
+{/* // </div>
+                            // </div > 
+                        //             </div >
+
+
                         <div>
                             <hr className="divider" />
                             <div className="columns col-oneline profile-nav">
                                 <div className="column col-5">
-                                    <Link to="/stories">Family stories</Link>
+                                    <Link to="/stories">Read Family Stories</Link>
                                 </div>
                                 <div className="divider text-center col-2" data-content="OR"></div>
                                 <div className="column col-5">
-                                    <Link to="/chats">Join a chat</Link>
+                                    <Link to="/new">Write Your Story</Link>
                                 </div>
                             </div>
                         </div>
-                        <div className='user-stories'>
+
+
+                        {/* <div className='user-stories'>
                             {
                                 this.state.stories.length === 0 && this.state.likedStories.length === 0 &&
                                 <div className="empty">
@@ -122,9 +140,9 @@ class Profile extends React.Component {
                                     <div className="empty-action">
                                         <Link className="btn btn-primary" to="/stories"> ✏️ </Link>
                                     </div>
-                                </div>
-                            }
-                            {
+                                </div> */}
+// }
+{/* {
                                 this.state.stories.length > 0 &&
                                 <div>
                                     <h3>Your family stories:</h3>
@@ -136,26 +154,18 @@ class Profile extends React.Component {
                                         }
                                     </div>
                                 </div>
-                            }
-                            {
+                            } */}
+{/* {
                                 this.state.likedStories.length > 0 &&
-                                <div>
-                                    <h3>Family stories you liked:</h3>
-                                    <div className='stories-list'>
-                                        {
+                                <div> */}
+{/* <h3>Family stories you liked:</h3> */ }
+{/* <div className='stories-list'> */ }
+{/* {
                                             this.state.likedStories.map(story => {
                                                 return <Link to={`/stories/${story._id}`} key={story._id}><img src={story.image} /></Link>
                                             })
-                                        }
-                                    </div>
-                                </div>
-                            }
-                        </div>
-                    </div>
-                }
-            </div>
-        )
-    }
-}
-
-export default Profile
+                                        } */}
+{/* </div> */ }
+{/* </div> */ }
+// }
+{/* </div> */ }

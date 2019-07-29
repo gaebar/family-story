@@ -53,7 +53,7 @@ class Stories extends React.Component {
                     this.state.data &&
                     <div>
                         <div className="stories-nav">
-                            <Link to="/stories/new" className="float-right"> Post a Story</Link>
+                            <Link to="/stories/new" className="float-right"> Write a Story</Link>
                             <div className="filter">
                                 <input
                                     type="radio"
