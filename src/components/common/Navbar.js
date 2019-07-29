@@ -62,7 +62,7 @@ class Navbar extends React.Component {
                                 </a>
                                 <ul className="menu nav-menu">
                                     <li><Link to="/stories">Read New Stories</Link></li>
-                                    <li><Link to="/new">Write Your Story</Link></li>
+                                    <li><Link to="/stories/new">Write Your Story</Link></li>
                                     <li><Link to="/profile">Your Profile</Link></li>
                                     <hr />
                                     <li><a onClick={this.logout} className="c-hand">Logout</a></li>

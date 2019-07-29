@@ -24,13 +24,13 @@ class Login extends React.Component {
 
         axios.post('/api/login', this.state.data)
             .then(res => {
+                Auth.setToken(res.data.token)
                 this.loginHandler()
             })
             .catch(() => this.setState({ error: 'Invalid Crendentials' }))
     }
 
     loginHandler() {
-        Auth.setToken(res.data.token)
         this.props.history.push('/profile')
     }
 

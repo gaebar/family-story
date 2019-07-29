@@ -1,5 +1,5 @@
 from app import app, db
-from models.story import Story, Comment
+from models.story import Story
 from models.user import UserSchema
 
 
@@ -65,21 +65,13 @@ with app.app_context():
         title='A story about my Jewish origins',
         description='Collecting our German naturalisation certificates this morning!',
         content=first_story,
-        genre='history',
         image_url='https://jewishculture.illinois.edu/sites/default/files/inline-images/IMG_0056.JPG',
         creator=gae
-    )
-
-    comment_one = Comment(
-        text='10/10 will read again',
-        user=mapping_my_way,
-        story=origins
     )
 
     db.session.add(gae)
     db.session.add(jack)
     db.session.add(mapping_my_way)
     db.session.add(origins)
-    db.session.add(comment_one)
 
     db.session.commit()

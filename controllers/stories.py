@@ -1,12 +1,11 @@
 from flask import Blueprint, jsonify, request, g
-from models.story import Story, StorySchema, CommentSchema, Comment
+from models.story import Story, StorySchema
 from models.user import UserSchema
 from lib.secure_route import secure_route
 from lib.helpers import is_unique
 
 api = Blueprint('stories', __name__)
 story_schema = StorySchema()
-comment_schema = CommentSchema()
 
 
 # ================= *** STORY *** =================
@@ -87,52 +86,3 @@ def save_story(story_id):
     user.save()
 
     return user_schema.jsonify(user), 201
-
-# ================= *** COMMENT *** ======================
-
-
-# === CREATE A COMMENT ===
-
-@api.route('/stories/<int:story_id>/comments', methods=['POST'])
-def comment_create(story_id):
-    story = Story.query.get(story_id)
-    if not story:
-        return jsonify({'message': 'Not Found'}), 404
-    data = request.get_json()
-    comment, errors = comment_schema.load(data)
-    if errors:
-        return jsonify(errors), 422
-    comment.story = story
-    comment.save()
-    return comment_schema.jsonify(comment), 202
-
-# === DELETE COMMENT ===
-
-
-@api.route('/stories/<int:story_id>/comments/<int:comment_id>', methods=['DELETE'])
-def comment_delete(**kwargs):
-    comment = Comment.query.get(kwargs['comment_id'])
-    if not comment:
-        return jsonify({'message': 'Not Found'}), 404
-    comment.remove()
-    return '', 204
-
-# === EDIT COMMENT ===
-
-
-@api.route('/stories/<int:story_id>/comments/<int:comment_id>', methods=['PUT'])
-@secure_route
-def update_comment(story_id, comment_id):
-
-    comment = Comment.query.get(comment_id)
-    comment, errors = comment_schema.load(request.get_json())
-
-    if errors:
-        return jsonify(errors), 422
-
-    comment.story = Story.query.get(story_id)
-    comment.user = g.current_user
-
-    comment.save()
-
-    return comment_schema.jsonify(comment)

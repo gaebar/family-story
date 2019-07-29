@@ -48,7 +48,7 @@ class User(db.Model, BaseModel):
 
 class UserSchema(ma.ModelSchema, BaseSchema):
 
-    email = fields.Email()
+    email = fields.Email(required=True)
 
     @validates_schema
     # pylint: disable=R0201
