@@ -36,10 +36,10 @@ class StoryCreate extends React.Component {
                     <div className="col-3 registercolumn">
 
                         <div>
-                            <blockquote className="text-center">
+                            {/* <blockquote className="text-center">
                                 <p>“There are little stories around us that can hold glimmers of inspiration.”</p>
                                 <cite>Richelle Mead</cite>
-                            </blockquote>
+                            </blockquote> */}
                             <div className="chatsheader text-center">
                                 <h1>Post Your Story</h1>
                             </div>
@@ -60,16 +60,16 @@ class StoryCreate extends React.Component {
                                     onChange={this.handleChange}
                                 />
                                 {this.state.errors && <small className="help is-danger">{this.state.errors.caption}</small>}
-                                <label className="form-label" htmlFor="location">Location</label>
+                                {/* <label className="form-label" htmlFor="location">Location</label>
                                 <input
                                     className={`form-input input-sm ${this.state.errors ? 'is-error' : ''} `}
                                     name="location"
                                     placeholder="where is this?"
                                     onChange={this.handleChange}
                                 />
-                                {this.state.errors && <small className="help is-danger">{this.state.errors.location}</small>}
+                                {this.state.errors && <small className="help is-danger">{this.state.errors.location}</small>} */}
 
-                                <label className="form-label" htmlFor="category">Category</label>
+                                {/* <label className="form-label" htmlFor="category">Category</label>
                                 <div className="form-group">
                                     <select
                                         className={`form-select ${this.state.errors ? 'is-error' : ''} `}
@@ -85,7 +85,7 @@ class StoryCreate extends React.Component {
                                     </select>
                                 </div>
                                 {this.state.errors && <small className="help is-danger">{this.state.errors.category}</small>}
-                                <br />
+                                <br /> */}
                                 <button type="submit" className="btn btn-primary input-group-btn input-sm">Submit</button>
                             </form>
                         </div>
