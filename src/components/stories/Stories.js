@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import StoriesShow from './StoriesShow'
+import Story from './Story'
 import Auth from '../../lib/Auth'
 import { Link } from 'react-router-dom'
 
@@ -8,31 +8,19 @@ class Stories extends React.Component {
     constructor() {
         super()
 
-        this.state = { data: null, filterCategory: '', checked: null }
-        this.handleChange = this.handleChange.bind(this)
+        this.state = { stories: null }
     }
 
     getData() {
         axios.get('/api/stories', {
             headers: { Authorization: `Bearer ${Auth.getToken()}` }
         })
-            .then(res => this.setState({ data: res.data }))
+            .then(res => this.setState({ stories: res.data }))
             .catch(err => console.log(err))
     }
 
     componentDidMount() {
         this.getData()
-    }
-
-    handleChange(e, n) {
-        const category = e.target.value
-        this.setState({ filterCategory: category, checked: n })
-    }
-
-    filterStories() {
-        debugger
-        const regexp = new RegExp(this.state.filterCategory, 'i')
-        return this.state.data.filter(story => regexp.test(story.category))
     }
 
     render() {
@@ -50,108 +38,27 @@ class Stories extends React.Component {
                     <img src='https://media2.giphy.com/media/mFHVvtrf1n3qm3pdvr/giphy.gif?cid=790b76115d25fc155230413373f1d5d2&rid=giphy.gif' />
                 } */}
                 {
-                    this.state.data &&
+                    this.state.stories &&
                     <div>
                         <div className="stories-nav">
                             <Link to="/stories/new" className="float-right"> Write a Story</Link>
-                            <div className="filter">
-                                <input
-                                    type="radio"
-                                    id="tag-0"
-                                    className="filter-tag"
-                                    name="category"
-                                    value=""
-                                    onChange={(e) => {
-                                        this.handleChange(e, 0)
-                                    }
-                                    }
-                                    hidden />
-                                <input
-                                    type="radio"
-                                    id="tag-1"
-                                    className="filter-tag"
-                                    name="category"
-                                    value="Markets"
-                                    onChange={(e) => {
-                                        this.handleChange(e, 1)
-                                    }
-                                    }
-                                    hidden />
-                                <input
-                                    type="radio"
-                                    id="tag-2"
-                                    className="filter-tag"
-                                    name="category"
-                                    value="Temples"
-                                    onChange={(e) => {
-                                        this.handleChange(e, 2)
-                                    }
-                                    }
-                                    hidden />
-                                <input
-                                    type="radio"
-                                    id="tag-3"
-                                    className="filter-tag"
-                                    name="category"
-                                    value="Beaches"
-                                    onChange={(e) => {
-                                        this.handleChange(e, 3)
-                                    }
-                                    }
-                                    hidden />
-                                <input
-                                    type="radio"
-                                    id="tag-4"
-                                    className="filter-tag"
-                                    name="category"
-                                    value="Landscapes"
-                                    onChange={(e) => {
-                                        this.handleChange(e, 4)
-                                    }
-                                    }
-                                    hidden
-                                />
-                                <div className="filter-nav">
-                                    <label
-                                        className={`chip ${this.state.checked === 0 ? 'bg-warning' : ''}`}
-                                        htmlFor="tag-0">
-                                        All
-                  </label>
-                                    <label
-                                        className={`chip ${this.state.checked === 1 ? 'bg-warning' : ''}`}
-                                        htmlFor="tag-1">
-                                        Markets
-                  </label>
-                                    <label
-                                        className={`chip ${this.state.checked === 2 ? 'bg-warning' : ''}`}
-                                        htmlFor="tag-2">
-                                        Temples
-                  </label>
-                                    <label
-                                        className={`chip ${this.state.checked === 3 ? 'bg-warning' : ''}`}
-                                        htmlFor="tag-3">
-                                        Beaches
-                  </label>
-                                    <label
-                                        className={`chip ${this.state.checked === 4 ? 'bg-warning' : ''}`}
-                                        htmlFor="tag-4">
-                                        Landscapes
-                  </label>
-                                </div>
-                            </div>
                         </div>
-                        <div className='columns stories-background multiline is-mobile'>
+                        <div className='columns gems-background multiline is-mobile'>
                             {
-                                this.filterStories().map(story => {
-                                    console.log(story)
-                                    return <Story key={story.id} {...story} />
+                                this.state.stories.map(story => {
+                                    return <Link to={`/stories/${story.id}`} key={story.id}>
+                                        <figure>
+                                            <img src={story.image_url}
+                                                alt={story.title} />
+                                            <figcaption>{story.title}</figcaption>
+                                        </figure>
+                                    </Link>
                                 })
                             }
                         </div>
                     </div>
 
                 }
-
             </div>
         )
     }
