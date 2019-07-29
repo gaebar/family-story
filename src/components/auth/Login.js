@@ -10,6 +10,8 @@ class Login extends React.Component {
         this.state = { data: {}, error: '' }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.loginHandler = this.loginHandler.bind(this)
+
     }
 
     handleChange({ target: { name, value } }) {
@@ -22,10 +24,14 @@ class Login extends React.Component {
 
         axios.post('/api/login', this.state.data)
             .then(res => {
-                Auth.setToken(res.data.token)
-                this.props.history.push('/')
+                this.loginHandler()
             })
             .catch(() => this.setState({ error: 'Invalid Crendentials' }))
+    }
+
+    loginHandler() {
+        Auth.setToken(res.data.token)
+        this.props.history.push('/profile')
     }
 
     render() {
@@ -36,7 +42,7 @@ class Login extends React.Component {
                     <div className="column col-3 logincolumn">
                         <form className="login-form" onSubmit={this.handleSubmit}>
                             <h2 className="title">Login</h2>
-                            {this.state.error && <small className="help is-danger">{this.state.error}</small>}
+                            {this.state.error && <small className="help text-error">{this.state.error}</small>}
                             <div className="form-group">
                                 <label className="form-label" htmlFor="name"></label>
                                 <input

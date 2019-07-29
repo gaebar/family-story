@@ -28,36 +28,25 @@ class Stories extends React.Component {
             <div className="stories-index">
                 <div>
                     <h1 className="text-center">Family Stories</h1>
-                    {/* <div className="text-center">
-                        <p>Watch with glittering eyes the whole world around you.</p>
-                        <cite>- Ronald Dahl</cite>
-                    </div> */}
                 </div>
-                {/* {
-                    !this.state.data &&
-                    <img src='https://media2.giphy.com/media/mFHVvtrf1n3qm3pdvr/giphy.gif?cid=790b76115d25fc155230413373f1d5d2&rid=giphy.gif' />
-                } */}
                 {
                     this.state.stories &&
                     <div>
                         <div className="stories-nav">
-                            <Link to="/stories/new" className="float-right"> Write a Story</Link>
+                            <div className="columns text-center">
+                                <div className="column col-4 col-mx-auto">
+                                    <div className="bg-secondary text-primary docs-block"> <Link to="/stories/new"> Write a Story</Link></div>
+                                </div>
+                            </div>
                         </div>
-                        <div className='columns gems-background multiline is-mobile'>
+                        <div className='columns stories-background multiline is-mobile'>
                             {
                                 this.state.stories.map(story => {
-                                    return <Link to={`/stories/${story.id}`} key={story.id}>
-                                        <figure>
-                                            <img src={story.image_url}
-                                                alt={story.title} />
-                                            <figcaption>{story.title}</figcaption>
-                                        </figure>
-                                    </Link>
+                                    return <Story key={story.id} {...story} />
                                 })
                             }
                         </div>
                     </div>
-
                 }
             </div>
         )

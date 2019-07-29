@@ -56,7 +56,7 @@ class StoryEdit extends React.Component {
                                         placeholder="where is this?"
                                         onChange={this.handleChange}
                                     />
-                                    {this.state.errors && <small className="help is-danger">{this.state.errors.location}</small>}
+                                    {this.state.errors && <small className="help text-error">{this.state.errors.location}</small>}
 
                                     <h2 className="title text-center">Caption</h2>
                                     <textarea
@@ -67,7 +67,7 @@ class StoryEdit extends React.Component {
                                         placeholder="caption here"
                                         onChange={this.handleChange}
                                     />
-                                    {this.state.errors && <small className="help is-danger">{this.state.errors.caption}</small>}
+                                    {this.state.errors && <small className="help text-error">{this.state.errors.caption}</small>}
 
                                     <h2 className="title text-center">Category</h2>
 
@@ -85,7 +85,7 @@ class StoryEdit extends React.Component {
                                             <option>Others</option>
                                         </select>
                                     </div>
-                                    {this.state.errors && <small className="help is-danger">{this.state.errors.category}</small>}
+                                    {this.state.errors && <small className="help text-error">{this.state.errors.category}</small>}
                                     <br />
                                     <div className="text-center">
                                         <button type="submit" className="btn btn-primary input-group-btn input-sm storyeditsubmit">Submit</button>

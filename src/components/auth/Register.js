@@ -49,7 +49,7 @@ class Register extends React.Component {
                                     placeholder="Username"
                                     onChange={this.handleChange}
                                 />
-                                {this.state.errors && <small className="help is-danger">{this.state.errors.username}</small>}
+                                {this.state.errors && <small className="help text-error">{this.state.errors.username}</small>}
 
                                 <input
                                     className={`form-input input-sm ${this.state.errors.email ? 'is-error' : ''} `}
@@ -57,7 +57,7 @@ class Register extends React.Component {
                                     placeholder="Email"
                                     onChange={this.handleChange}
                                 />
-                                {this.state.errors && <small className="help is-danger">{this.state.errors.email}</small>}
+                                {this.state.errors && <small className="help text-error">{this.state.errors.email}</small>}
 
                                 <input
                                     className={`form-input input-sm ${this.state.errors.password ? 'is-error' : ''} `}
@@ -66,7 +66,7 @@ class Register extends React.Component {
                                     type="password"
                                     onChange={this.handleChange}
                                 />
-                                {this.state.errors && <small className="help is-danger">{this.state.errors.password}</small>}
+                                {this.state.errors && <small className="help text-error">{this.state.errors.password}</small>}
 
                                 <input
                                     className={`form-input input-sm ${this.state.errors.passwordConfirmation ? 'is-error' : ''} `}
@@ -75,7 +75,7 @@ class Register extends React.Component {
                                     type="password"
                                     onChange={this.handleChange}
                                 />
-                                {this.state.errors && <small className="help is-danger">{this.state.errors.passwordConfirmation}</small>}
+                                {this.state.errors && <small className="help text-error">{this.state.errors.passwordConfirmation}</small>}
                                 <label className="form-label" htmlFor="image_url">Your Details</label>
                                 <input
                                     className={`form-input input-sm ${this.state.errors.image_url ? 'is-error' : ''} `}
@@ -83,7 +83,7 @@ class Register extends React.Component {
                                     placeholder="Link to profile picture"
                                     onChange={this.handleChange}
                                 />
-                                {this.state.errors && <small className="help is-danger">{this.state.errors.image_url}</small>}
+                                {this.state.errors && <small className="help text-error">{this.state.errors.image_url}</small>}
                                 <div className="form-group">
 
                                     <textarea
@@ -93,7 +93,7 @@ class Register extends React.Component {
                                         name="bio"
                                         onChange={this.handleChange}>
                                     </textarea>
-                                    {this.state.errors && <small className="help is-danger">{this.state.errors.bio}</small>}
+                                    {this.state.errors && <small className="help text-error">{this.state.errors.bio}</small>}
                                 </div>
                             </div>
                             <button type="submit" className="btn btn-primary input-group-btn input-sm submitbutton">Submit</button>

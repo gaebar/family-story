@@ -31,12 +31,13 @@ const App = () => {
                     <Route path='/profile' component={Profile} />
                     <Route path='/register' component={Register} />
                     <Route exact path="/" render={() => (
-                        Auth.isAuthenticated() ? (
-                            <Redirect to="/profile" />
+                        !Auth.isAuthenticated() ? (
+                            <Redirect to="/login" />
                         ) : (
-                                <Login />
+                                <Redirect to="/profile" />
                             )
                     )} />
+                    <Route path='/login' component={Login} />
                 </Switch>
                 <Footer />
             </main>
