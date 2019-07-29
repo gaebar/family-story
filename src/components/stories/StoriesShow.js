@@ -3,7 +3,6 @@ import axios from 'axios'
 import Auth from '../../lib/Auth'
 import { Link } from 'react-router-dom'
 import { MdClear } from 'react-icons/md'
-import { TiPencil } from 'react-icons/ti'
 
 class StoriesShow extends React.Component {
     constructor() {
@@ -104,7 +103,6 @@ class StoriesShow extends React.Component {
                                         className="btn btn-link btn-sm"
                                         to={`/stories/${this.props.match.params.storyId}/edit`}
                                     >
-                                        <TiPencil />
                                     </Link>
                                     }
                                     {this.isOwner() &&

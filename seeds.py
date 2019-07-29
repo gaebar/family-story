@@ -14,8 +14,8 @@ with app.app_context():
         'email': 'gae@email.com',
         'password': 'pass',
         'password_confirmation': 'pass',
-        'image_url': 'https://www.shareicon.net/data/128x128/2016/08/18/810220_user_512x512.png',
-        'bio': 'Here I am!'
+        'image_url': 'https://images-na.ssl-images-amazon.com/images/I/71gvLgqIOdL._UX250_.jpg',
+        'bio': 'Writing historical novels, several of them have been published. Research and blogging about old Italian Traditions, Shadow Yoga, reading books, travel to historical places.'
     })
 
     if errors:

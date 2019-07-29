@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request, g
 from models.user import User, UserSchema
 from lib.secure_route import secure_route
-# from models.story import Story, StorySchema
+from models.story import Story, StorySchema
 
 api = Blueprint('auth', __name__)
 user_schema = UserSchema()

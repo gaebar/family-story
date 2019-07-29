@@ -11,7 +11,7 @@ const Footer = () => (
         <section className="navbar-center">
         </section>
         <section className="navbar-section">
-            <a href="https://github.com/gaebar" target="_blank" className="btn btn-link">
+            <a href="https://github.com/gaebar/sei-project-4" target="_blank" className="btn btn-link">
                 <img className="githubicon" src="../assets/images/github-logo.png" height='30' />
             </a>
         </section>
