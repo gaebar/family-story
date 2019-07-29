@@ -7,7 +7,7 @@ class Profile extends React.Component {
     constructor() {
         super()
 
-        this.state = { user: null, stories: [] }
+        this.state = { creator: null, stories: [] }
     }
 
     getUserStories() {
@@ -15,11 +15,7 @@ class Profile extends React.Component {
             headers: { Authorization: `Bearer ${Auth.getToken()}` }
         })
             .then(res => {
-                const userStories = res.data.filter(story => story.user._id === this.state.user._id)
-                // const likedStories = res.data.filter(story => {
-                //     const array = story.likes.filter(like => like.user === this.state.user._id)
-                //     return array[0]
-                // })
+                const userStories = res.data.filter(story => story.creator.id === this.state.creator.id)
                 return this.setState({ stories: userStories })
             })
             .catch(err => console.log(err))
@@ -29,7 +25,7 @@ class Profile extends React.Component {
         axios.get('/api/profile', {
             headers: { Authorization: `Bearer ${Auth.getToken()}` }
         })
-            .then(res => this.setState({ user: res.data }))
+            .then(res => this.setState({ creator: res.data }))
             .then(() => this.getUserStories())
             .catch(err => console.log(err))
     }
@@ -42,23 +38,57 @@ class Profile extends React.Component {
         return (
             <div>
                 {
-                    this.state.user &&
+                    this.state.creator &&
                     <div className='user-page'>
                         <div className="columns user-header">
                             <div className="column col-5">
-                                <img src={this.state.user.image_url} className="profile-pic" />
+                                <img src={this.state.creator.image_url} className="profile-pic" />
                             </div>
                             <div className="column col-7">
-                                <h2>{this.state.user.username}</h2>
+                                <h2>{this.state.creator.username}</h2>
                                 <br />
-                                <p>{this.state.user.bio}</p>
+                                <p>{this.state.creator.bio}</p>
                             </div>
                         </div>
 
                     </div >
                 }
-            </div >
 
+                <div className='user-stories'>
+                    {
+                        this.state.stories.length === 0 &&
+                        <div className="empty">
+                            <div className="empty-icon">
+                                <i className="icon icon-people"></i>
+                            </div>
+                            <p className="empty-title h5">No stories yet</p>
+                            <p className="empty-subtitle">Looks like you have not posted any story yet</p>
+                            <div className="empty-action">
+                                <Link className="btn btn-primary" to="/stories"> ✏️ </Link>
+                            </div>
+                        </div>
+                    }
+                    {
+                        this.state.stories.length > 0 &&
+                        <div>
+                            <h3>Your Stories:</h3>
+                            <div className='stories-list'>
+                                {
+                                    this.state.stories.map(story => {
+                                        return <Link to={`/stories/${story.id}`} key={story.id}>
+                                            <figure>
+                                                <img src={story.image_url}
+                                                    alt={story.title} />
+                                                <figcaption>{story.title}</figcaption>
+                                            </figure>
+                                        </Link>
+                                    })
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div >
         )
     }
 }
@@ -66,11 +96,8 @@ class Profile extends React.Component {
 export default Profile
 
 
-
-
-
 {/* <div className='user-info'>
-                                    <div className="popover popover-bottom"><a className="followers-btn" href="#popovers">{this.state.user.followers.length} Followers</a>
+                                    <div className="popover popover-bottom"><a className="followers-btn" href="#popovers">{this.state.creator.followers.length} Followers</a>
                                         <div className="popover-container">
                                             <div className="card">
                                                 <div className="card-header">
@@ -79,12 +106,12 @@ export default Profile
                                                 </div>
                                                 <div className="card-body"> */}
 {/* {
-                                                        this.state.user.followers.map(follower => {
-                                                            return <div key={follower.user._id} className="tile">
-                                                                <Link to={`/users/${follower.user._id}`}>
+                                                        this.state.creator.followers.map(follower => {
+                                                            return <div key={follower.creator._id} className="tile">
+                                                                <Link to={`/users/${follower.creator._id}`}>
                                                                     <div className="tile-icon">
-                                                                        <figure className="avatar"><img src={follower.user.image} alt="Avatar" />
-                                                                            <p className="tile-title text-bold">{follower.user.username}</p>
+                                                                        <figure className="avatar"><img src={follower.creator.image} alt="Avatar" />
+                                                                            <p className="tile-title text-bold">{follower.creator.username}</p>
                                                                         </figure>
                                                                     </div>
                                                                     <div className="tile-content">
