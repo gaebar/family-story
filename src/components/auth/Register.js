@@ -76,24 +76,24 @@ class Register extends React.Component {
                                     onChange={this.handleChange}
                                 />
                                 {this.state.errors && <small className="help is-danger">{this.state.errors.passwordConfirmation}</small>}
-                                <label className="form-label" htmlFor="image">Your Details</label>
+                                <label className="form-label" htmlFor="image_url">Your Details</label>
                                 <input
-                                    className={`form-input input-sm ${this.state.errors.image ? 'is-error' : ''} `}
-                                    name="image"
+                                    className={`form-input input-sm ${this.state.errors.image_url ? 'is-error' : ''} `}
+                                    name="image_url"
                                     placeholder="Link to profile picture"
                                     onChange={this.handleChange}
                                 />
-                                {this.state.errors && <small className="help is-danger">{this.state.errors.image}</small>}
+                                {this.state.errors && <small className="help is-danger">{this.state.errors.image_url}</small>}
                                 <div className="form-group">
 
                                     <textarea
-                                        className={`form-input ${this.state.errors.text ? 'is-error' : ''} `}
+                                        className={`form-input ${this.state.errors.bio ? 'is-error' : ''} `}
                                         placeholder="Tell Us About Yourself"
                                         rows="3"
-                                        name="text"
+                                        name="bio"
                                         onChange={this.handleChange}>
                                     </textarea>
-                                    {this.state.errors && <small className="help is-danger">{this.state.errors.text}</small>}
+                                    {this.state.errors && <small className="help is-danger">{this.state.errors.bio}</small>}
                                 </div>
                             </div>
                             <button type="submit" className="btn btn-primary input-group-btn input-sm submitbutton">Submit</button>
