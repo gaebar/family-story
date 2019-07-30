@@ -10,7 +10,7 @@ with app.app_context():
     db.create_all()
 
     gae, errors = user_schema.load({
-        'username': 'gae',
+        'username': 'Gae',
         'email': 'gae@email.com',
         'password': 'pass',
         'password_confirmation': 'pass',

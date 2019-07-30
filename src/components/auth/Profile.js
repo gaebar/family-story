@@ -71,7 +71,7 @@ class Profile extends React.Component {
                     {
                         this.state.stories.length > 0 &&
                         <div>
-                            <h3>Your Stories:</h3>
+                            <h3>Your Stories</h3>
                             <div className='stories-list'>
                                 {
                                     this.state.stories.map(story => {
