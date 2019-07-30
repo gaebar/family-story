@@ -9,8 +9,8 @@ with app.app_context():
     db.drop_all()
     db.create_all()
 
-    gae, errors = user_schema.load({
-        'username': 'Gae',
+    gaetano, errors = user_schema.load({
+        'username': 'Gaetano',
         'email': 'gae@email.com',
         'password': 'pass',
         'password_confirmation': 'pass',
@@ -66,10 +66,10 @@ with app.app_context():
         description='Collecting our German naturalisation certificates this morning!',
         content=first_story,
         image_url='https://jewishculture.illinois.edu/sites/default/files/inline-images/IMG_0056.JPG',
-        creator=gae
+        creator=gaetano
     )
 
-    db.session.add(gae)
+    db.session.add(gaetano)
     db.session.add(jack)
     db.session.add(mapping_my_way)
     db.session.add(origins)
