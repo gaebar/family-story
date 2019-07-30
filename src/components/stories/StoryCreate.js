@@ -46,7 +46,7 @@ class StoryCreate extends React.Component {
                                 <input
                                     className={`form-input input-sm ${this.state.errors ? 'is-error' : ''} `}
                                     name="title"
-                                    placeholder="title"
+                                    placeholder="Title"
                                     onChange={this.handleChange}
                                 />
                                 {this.state.errors && <small className="help text-error">{this.state.errors.title}</small>}

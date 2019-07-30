@@ -87,10 +87,12 @@ $paragraph-size: 18px;
   .stories-list {
     display: flex;
     flex-wrap: wrap;
+    text-align: center;
   }
   h3 {
     margin-top: 50px;
     color: darkgoldenrod
+
   }
   img {
     width: 300px;

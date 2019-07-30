@@ -17,14 +17,21 @@ $yellow: goldenrod;
     padding: 30px;
     /* float: right; */
     margin: 75px 51px;
+ 
 }
 .form-input {
-    margin: 10px auto;
+    margin: 5px auto;
     background: #fafafa;
+    font-family: sans-serif;
+}
+
+.form-label {
+  font-family: sans-serif;
 }
 
 .login-form {
     margin: 20px;
+    
 }
 .avatar-lg {
   margin: 10px;
@@ -34,15 +41,22 @@ $yellow: goldenrod;
   background: white;
 }
 
-.btn.btn-primary {
+
+.btn.btn-primary:hover{
   background-color: white;
   text-decoration: none;
   color: $yellow;
   border: 1px solid $yellow;
+  font-family: sans-serif;
 }
-.btn.btn-primary:hover {
+.btn.btn-primary {
   background-color: $yellow;
   text-decoration: none;
   color: white;
   border: 1px solid white;
+  font-family: sans-serif;
+}
+
+body {
+  font-size: .7rem;
 }

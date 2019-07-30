@@ -7,12 +7,14 @@ $subtitle-size: 28px;
   padding: 0px 20px;
   display:flex;
   align-items: center;
+  
   .title {
     font-size: $subtitle-size;
   }
   .chip {
     height: 35px;
     font-size: 17px;
+
   }
   .navbar-section, .dropdown {
     display: flex;
@@ -21,6 +23,7 @@ $subtitle-size: 28px;
     a, chip-link {
       color: $grey;
       text-decoration: none;
+      // font-family: sans-serif;
     }
     a:hover, chip-link:hover {
       color: $yellow;
