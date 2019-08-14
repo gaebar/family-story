@@ -3,7 +3,7 @@ $yellow: goldenrod;
 $subtitle-size: 28px;
 
 .navbar {
-  height: 10vh;
+  height: 6.5vh;
   padding: 0px 20px;
   display:flex;
   align-items: center;
@@ -31,3 +31,18 @@ $subtitle-size: 28px;
     }
   }
 }
+
+header.navbar .navbar-section {
+  padding-top: 0px;
+}
+
+footer.navbar .navbar-section {
+  padding-top: 0px;
+  margin-top: 0px;
+  flex-wrap: wrap;
+}
+
+.footersection {
+
+}
+
