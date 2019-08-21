@@ -11,7 +11,7 @@ Inspired by my interest in history and culture, I built Family Story, a web app 
 ### The Brief
 Create a full-stack app using Python and PostgreSQL on the server-side and React on the client-side. 
 
-## Tech Stack
+### Technologies
 - React 
 - Sass CSS 
 - Spectre 
@@ -28,8 +28,6 @@ Create a full-stack app using Python and PostgreSQL on the server-side and React
 - Insomnia 
 - Heroku
 
-## Deployment
-Family Story is deployes on Heroku and it can be found here: http://heroku-badge.herokuapp.com/?app=viet-gram)](https://family-story-ga.herokuapp.com/
 ___
 
 ## Website Summary & Project Background
@@ -59,11 +57,11 @@ ___
 
 `yarn install`
 
-## Initialize the PostgreSQL database
+### Initialize the PostgreSQL database
 
 `yarn seed`
 
-## Run the app
+### Run the app
 
 Start the backend server
 
