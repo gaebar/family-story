@@ -32,7 +32,7 @@ ___
 
 ## Website Summary & Project Background
 
-Family Story is a content creation site for authors and readers to share and discover new short stories about families and old traditions. The website allows authors and readers to connect and communicate through messages and comments.
+Family Story is a content creation site for authors and readers to share and discover new short stories about families and old traditions. The website allows authors and readers to connect and communicate through messages and comments
 
 I wanted it to be a relatively simple idea so I could focus on ensuring the web app was made well, that it was visually appealing and responsive, error handling messages were working accurately and my code was clean. I realised that to build a complete social platform was a challenging task in just 7 days. So I decided that my MVP was a platform which allowed a user to register, post their stories, like and comment on the stories of others.
 
