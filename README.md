@@ -46,6 +46,7 @@ It was challenging to do the whole full-stack project myself in only one week, b
 
 ### Future Improvements
 Next stage of developing Family Story would be adding private messages functionality.
+Language translator to let the user choose the prefer reading reading language.
 
 ___
 
