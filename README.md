@@ -36,6 +36,26 @@ Family Story is a content creation site for authors and readers to share and dis
 
 I wanted it to be a relatively simple idea so I could focus on ensuring the web app was made well, that it was visually appealing and responsive, error handling messages were working accurately and my code was clean. I realised that to build a complete social platform was a challenging task in just 7 days. So I decided that my MVP was a platform which allowed a user to register, post their stories, like and comment on the stories of others.
 
+## Login
+![Login Screen](./src/assets/images/login.jpg)
+
+## Register
+
+![Register Screen](./src/assets/images/register.png)
+
+## Profile
+
+![Profile Screen](./src/assets/images/profile.png)
+
+## Stories Page
+
+![Story Screen](./src/assets/images/stories-page.png)
+
+## Write a Story
+
+![Write a Story Screen](./src/assets/images/write-story.png)
+
+
 ## Process
 The project started with an Entity Relationship Diagram (ERD) and I used Draw.io and Google Slides to wireframe. The site has a Python/PostgreSQL backend and a React frontend. Based on the initial technical design, I built the data models and used Flask to provide the API framework. Before building the front end, I tested the API endpoints using Insomnia and TablePlus.
 
