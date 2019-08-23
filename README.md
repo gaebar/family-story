@@ -59,6 +59,8 @@ I wanted it to be a relatively simple idea so I could focus on ensuring the web 
 ## Process
 The project started with an Entity Relationship Diagram (ERD) and I used Draw.io and Google Slides to wireframe. The site has a Python/PostgreSQL backend and a React frontend. Based on the initial technical design, I built the data models and used Flask to provide the API framework. Before building the front end, I tested the API endpoints using Insomnia and TablePlus.
 
+![Entity Relationship Diagram](./src/assets/images/erd.jpg)
+
 I am proud of the code that I wrote to meet these initial objectives, and going forward with this project I will be looking to include filters for showing different types of posts, and then use a translation API to automatically adapt the stories to the reader’s language of choice. The back end was built using Python, Flask and PostgreSQL.
 
 ### Challenges and Wins
