@@ -1,5 +1,8 @@
 # SEI Project 4 - Family Story
-[![Heroku](http://heroku-badge.herokuapp.com/?app=viet-gram)](https://family-story-ga.herokuapp.com/)
+[![Heroku](http://heroku-badge.herokuapp.com/?app=viet-gram)](https://family-story-ga.herokuapp.com/) 
+
+![General Assembly Logo](./screenshots/ga-logo.png)
+
 
 Inspired by my interest in history and culture, I built Family Story, a web app for story lovers, which allows users to find short stories posted by other users and share their own post.
 
