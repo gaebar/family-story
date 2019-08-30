@@ -2,11 +2,11 @@
 
 # SEI Project 4 - Family Story
 
-![General Assembly Logo](./screenshots/ga-logo.png)
-
 Inspired by my interest in history and culture, I built Family Story, a web app for story lovers, which allows users to find short stories posted by other users and share their own post.
 
 **<a href="https://family-story-ga.herokuapp.com" target="_blank">Visit the Website</a>**
+
+![General Assembly Logo](./screenshots/ga-logo.png)
 
 ### Timeframe & Team
 > 7 days, solo
