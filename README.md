@@ -40,7 +40,7 @@ Family Story is a content creation website for authors and readers to share and 
 I wanted it to be a relatively simple idea so I could focus on ensuring the web app was made well, that it was visually appealing and responsive, error handling messages were working accurately and my code was clean. I realized that to build a complete social platform was a challenging task in just 7 days. So I decided that my MVP was a platform which allowed a user to register, post their stories, like and comment on the stories of others.
 
 ## Process
-The project started with an Entity Relationship Diagram (ERD) and I used Draw.io and Google Slides to prepare some initial wireframes.
+The project started with an ``Entity Relationship Diagram (ERD)`` and I used Draw.io and Google Slides to prepare some initial wireframes.
 
 ![Wireframes](./screenshots/family-story-wireframes.png)
 
