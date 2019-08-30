@@ -2,7 +2,7 @@
 
 # SEI Project 4 - Family Story
 
-Inspired by my interest in history and culture, I built Family Story, a web app for story lovers, which allows users to find short stories posted by other users and share their own post.
+Inspired by my interest in history and culture, I built Family Story, a web app for story lovers, which allows users to find short stories posted by other users and share their own posts.
 
 **<a href="https://family-story-ga.herokuapp.com" target="_blank">Visit the Website</a>**
 
@@ -35,29 +35,9 @@ ___
 
 ## Website Summary & Project Background
 
-Family Story is a content creation site for authors and readers to share and discover new short stories about families and old traditions. The website allows authors and readers to connect and communicate through messages and comments
+Family Story is a content creation website for authors and readers to share and discover short stories about families and old traditions. The website allows authors and readers to connect and communicate through messages and comments
 
-I wanted it to be a relatively simple idea so I could focus on ensuring the web app was made well, that it was visually appealing and responsive, error handling messages were working accurately and my code was clean. I realised that to build a complete social platform was a challenging task in just 7 days. So I decided that my MVP was a platform which allowed a user to register, post their stories, like and comment on the stories of others.
-
-## Login
-![Login Screen](./screenshots/login.jpg)
-
-## Register
-
-![Register Screen](./screenshots/register.png)
-
-## Profile
-
-![Profile Screen](./screenshots/profile.png)
-
-## Stories Page
-
-![Story Screen](./screenshots/stories-page.png)
-
-## Write a Story
-
-![Write a Story Screen](./screenshots/write-story.png)
-
+I wanted it to be a relatively simple idea so I could focus on ensuring the web app was made well, that it was visually appealing and responsive, error handling messages were working accurately and my code was clean. I realized that to build a complete social platform was a challenging task in just 7 days. So I decided that my MVP was a platform which allowed a user to register, post their stories, like and comment on the stories of others.
 
 ## Process
 The project started with an Entity Relationship Diagram (ERD) and I used Draw.io and Google Slides to prepare some initial wireframes.
@@ -79,6 +59,28 @@ This was a solo project, so I had to overcome many obstacles and challenges inde
 
 I have learned how to create a simple full-stack Flask/React web application, interacting with a PostgreSQL database in a secure manner and Implementing Login and Register functionalities in Python.
 
+___
+
+# Website visuals
+
+## Login
+![Login Screen](./screenshots/login.jpg)
+
+## Register
+
+![Register Screen](./screenshots/register.png)
+
+## Profile
+
+![Profile Screen](./screenshots/profile.png)
+
+## Stories Page
+
+![Story Screen](./screenshots/stories-page.png)
+
+## Write a Story
+
+![Write a Story Screen](./screenshots/write-story.png)
 ___
 
 ## Install
