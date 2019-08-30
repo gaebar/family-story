@@ -11,10 +11,10 @@ Inspired by my interest in history and culture, I built Family Story, a web app 
 ### Timeframe & Team
 > 7 days, solo
 
-### The Brief
+### Brief
 Create a full-stack app using Python and PostgreSQL on the server-side and React on the client-side. 
 
-### Technologies
+### Tech Stack
 - React 
 - Sass CSS 
 - Spectre 
@@ -40,34 +40,44 @@ Family Story is a content creation site for authors and readers to share and dis
 I wanted it to be a relatively simple idea so I could focus on ensuring the web app was made well, that it was visually appealing and responsive, error handling messages were working accurately and my code was clean. I realised that to build a complete social platform was a challenging task in just 7 days. So I decided that my MVP was a platform which allowed a user to register, post their stories, like and comment on the stories of others.
 
 ## Login
-![Login Screen](./src/assets/images/login.jpg)
+![Login Screen](./screenshots/login.jpg)
 
 ## Register
 
-![Register Screen](./src/assets/images/register.png)
+![Register Screen](./screenshots/register.png)
 
 ## Profile
 
-![Profile Screen](./src/assets/images/profile.png)
+![Profile Screen](./screenshots/profile.png)
 
 ## Stories Page
 
-![Story Screen](./src/assets/images/stories-page.png)
+![Story Screen](./screenshots/stories-page.png)
 
 ## Write a Story
 
-![Write a Story Screen](./src/assets/images/write-story.png)
+![Write a Story Screen](./screenshots/write-story.png)
 
 
 ## Process
-The project started with an Entity Relationship Diagram (ERD) and I used Draw.io and Google Slides to wireframe. The site has a Python/PostgreSQL backend and a React frontend. Based on the initial technical design, I built the data models and used Flask to provide the API framework. Before building the front end, I tested the API endpoints using Insomnia and TablePlus.
+The project started with an Entity Relationship Diagram (ERD) and I used Draw.io and Google Slides to prepare some initial wireframes.
 
-![Entity Relationship Diagram](./src/assets/images/erd.jpg)
+![Wireframes](./screenshots/family-story-wireframes.png)
+
+Family Story has a Python/PostgreSQL backend and a React frontend. Based on the initial technical design, I built the data models and used Flask to provide the API framework. Before building the front end, I tested the API endpoints using Insomnia and TablePlus.
+
+![Entity Relationship Diagram](./screenshots/erd.jpg)
 
 I am proud of the code that I wrote to meet these initial objectives, and going forward with this project I will be looking to include filters for showing different types of posts, and then use a translation API to automatically adapt the stories to the reader’s language of choice. The back end was built using Python, Flask and PostgreSQL.
 
 ### Challenges and Wins
 It was challenging to do the whole full-stack project myself in only one week, but also allowed me to get to know all parts of the process.
+
+## Key Learnings
+
+This was a solo project, so I had to overcome many obstacles and challenges independently. I had to plan the application from the beginning, creating user stories and wireframes, ERD diagrams, and plan database tables.
+
+I have learned how to create a simple full-stack Flask/React web application, interacting with a PostgreSQL database in a secure manner and Implementing Login and Register functionalities in Python.
 
 ### Future Improvements
 Next stage of developing Family Story would be adding private messages functionality.
@@ -263,5 +273,4 @@ class UserSchema(ma.ModelSchema, BaseSchema):
     class Meta:
         model = User
         exclude = ('password_hash', )
-
 ```
