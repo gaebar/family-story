@@ -100,3 +100,168 @@ Starts the frontend server
 ## Deploy
 
 With heroku, automatically deploys from new code is pushed to `master`
+
+
+---
+
+# Interesting code snippets
+
+## Authentication
+
+Firstly we get the Authorization header from the request and extract the token from it. Then we attempt to decode the token. If successful, we attempt to find the user by the sub property in the token's payload, the user's ID. If the user is found we add it to Flask's g module.
+
+
+```javascript
+class Auth {
+  static setToken(token) {
+    localStorage.setItem('token', token)
+  }
+
+  static getToken() {
+    return localStorage.getItem('token')
+  }
+
+  static logout() {
+    localStorage.removeItem('token')
+  }
+
+  static getPayload() {
+    const token = this.getToken()
+    if (!token) return false
+    const parts = token.split('.')
+    if (parts.length < 3) return false
+    return JSON.parse(atob(parts[1]))
+  }
+
+  static isAuthenticated() {
+    const payload = this.getPayload()
+    const now = Math.round(Date.now() / 1000)
+    return now < payload.exp
+  }
+}
+```
+
+Authentication Backend
+```python
+from flask import Blueprint, jsonify, request, g
+from models.user import User, UserSchema
+from lib.secure_route import secure_route
+
+api = Blueprint('auth', __name__)
+user_schema = UserSchema()
+
+# == REGISTER ===
+@api.route('/register', methods=['POST'])
+def register():
+    data = request.get_json()
+    user, errors = user_schema.load(data)
+    if errors:
+        return jsonify(errors), 422
+    user.save()
+    return jsonify({'message': 'Registration Successful'}), 201
+
+# === LOGIN ===
+@api.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    if not data:
+        return jsonify({'message': 'Unauthorized'}), 401
+    user = User.query.filter_by(email=data['email']).first()
+    if not user or not user.validate_password(data['password']):
+        return jsonify({'message': 'Unauthorized'}), 401
+    return jsonify({
+        'token': user.generate_token(),
+        'message': f'Welcome back {user.username}'
+    }), 200
+
+# ===   current user profile ===
+@api.route('/profile', methods=['GET'])
+@secure_route
+def profile():
+    return user_schema.jsonify(g.current_user), 200
+```
+
+## User Schema
+
+In the ``user.py`` file I have defined the schema for the user entity, using SQLAlchemy. This allows defining a map between Python entities and the database tables.
+
+It is also possible to define fields types, validation methods and error conditions for the forms. The relationships with the other entities are also defined, for example, the connection with the Stories that belongs to the User object.
+
+```python
+from datetime import datetime, timedelta
+import jwt
+from sqlalchemy.ext.hybrid import hybrid_property
+from marshmallow import validates_schema, fields, ValidationError, validate
+from app import db, ma, bcrypt
+from config.environment import secret
+from .base import BaseModel, BaseSchema
+
+
+class User(db.Model, BaseModel):
+
+    __tablename__ = 'users'
+
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(20), nullable=False, unique=True)
+    email = db.Column(db.String(128), nullable=True, unique=True)
+    password_hash = db.Column(db.String(128), nullable=True)
+    image_url = db.Column(db.String(256), nullable=False)
+    bio = db.Column(db.String(512), nullable=False)
+
+    @hybrid_property
+    def password(self):
+        pass
+
+    @password.setter
+    def password(self, plaintext):
+        self.password_hash = bcrypt.generate_password_hash(
+            plaintext).decode('utf-8')
+
+    def validate_password(self, plaintext):
+        return bcrypt.check_password_hash(self.password_hash, plaintext)
+
+    def generate_token(self):
+        payload = {
+            'exp': datetime.utcnow() + timedelta(days=1),
+            'iat': datetime.utcnow(),
+            'sub': self.id
+        }
+
+        token = jwt.encode(
+            payload,
+            secret,
+            'HS256'
+        ).decode('utf-8')
+
+        return token
+
+
+class UserSchema(ma.ModelSchema, BaseSchema):
+
+    email = fields.Email(required=True)
+
+    @validates_schema
+    # pylint: disable=R0201
+    def check_passwords_match(self, data):
+        if data.get('password') != data.get('password_confirmation'):
+            raise ValidationError(
+                'Passwords do not match',
+                'password_confirmation'
+            )
+
+    # todo: add checks to prevent inserting duplicate usernames
+
+    password = fields.String(required=True)
+    password_confirmation = fields.String(required=True)
+
+    image_url = fields.String(required=True)
+    bio = fields.String(required=True)
+
+    created_stories = fields.Nested(
+        'StorySchema', many=True, only=('name', 'id'))
+
+    class Meta:
+        model = User
+        exclude = ('password_hash', )
+
+```
