@@ -44,7 +44,7 @@ The project started with an Entity Relationship Diagram (ERD) and I used Draw.io
 
 ![Wireframes](./screenshots/family-story-wireframes.png)
 
-Family Story has a Python/PostgreSQL backend and a React frontend. Based on the initial technical design, I built the data models and used Flask to provide the API framework. Before building the front end, I tested the API endpoints using Insomnia and TablePlus.
+Family Story has a ``Python/PostgreSQL`` backend and a ``React`` frontend. Based on the initial technical design, I built the data models and used Flask to provide the API framework. Before building the front end, I tested the API endpoints using Insomnia and TablePlus.
 
 ![Entity Relationship Diagram](./screenshots/erd.jpg)
 
