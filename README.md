@@ -79,10 +79,6 @@ This was a solo project, so I had to overcome many obstacles and challenges inde
 
 I have learned how to create a simple full-stack Flask/React web application, interacting with a PostgreSQL database in a secure manner and Implementing Login and Register functionalities in Python.
 
-### Future Improvements
-Next stage of developing Family Story would be adding private messages functionality.
-Language translator to let the user choose the prefer reading reading language.
-
 ___
 
 ## Install
@@ -121,37 +117,8 @@ With heroku, automatically deploys from new code is pushed to `master`
 Firstly we get the Authorization header from the request and extract the token from it. Then we attempt to decode the token. If successful, we attempt to find the user by the sub property in the token's payload, the user's ID. If the user is found we add it to Flask's g module.
 
 
-```javascript
-class Auth {
-  static setToken(token) {
-    localStorage.setItem('token', token)
-  }
+### Authentication Backend
 
-  static getToken() {
-    return localStorage.getItem('token')
-  }
-
-  static logout() {
-    localStorage.removeItem('token')
-  }
-
-  static getPayload() {
-    const token = this.getToken()
-    if (!token) return false
-    const parts = token.split('.')
-    if (parts.length < 3) return false
-    return JSON.parse(atob(parts[1]))
-  }
-
-  static isAuthenticated() {
-    const payload = this.getPayload()
-    const now = Math.round(Date.now() / 1000)
-    return now < payload.exp
-  }
-}
-```
-
-Authentication Backend
 ```python
 from flask import Blueprint, jsonify, request, g
 from models.user import User, UserSchema
@@ -190,6 +157,39 @@ def login():
 def profile():
     return user_schema.jsonify(g.current_user), 200
 ```
+
+### Authentication Frontend
+
+```javascript
+class Auth {
+  static setToken(token) {
+    localStorage.setItem('token', token)
+  }
+
+  static getToken() {
+    return localStorage.getItem('token')
+  }
+
+  static logout() {
+    localStorage.removeItem('token')
+  }
+
+  static getPayload() {
+    const token = this.getToken()
+    if (!token) return false
+    const parts = token.split('.')
+    if (parts.length < 3) return false
+    return JSON.parse(atob(parts[1]))
+  }
+
+  static isAuthenticated() {
+    const payload = this.getPayload()
+    const now = Math.round(Date.now() / 1000)
+    return now < payload.exp
+  }
+}
+```
+
 
 ## User Schema
 
@@ -274,3 +274,11 @@ class UserSchema(ma.ModelSchema, BaseSchema):
         model = User
         exclude = ('password_hash', )
 ```
+
+## Future Improvements
+
+The next stage of this project would be adding these features, for example:
+ * Private a messages functionality, like I did in the group project [Vietgram](https://github.com/gaebar/vietgram).
+ * A more mobile friendly layout.
+ * Language translator to let the user choose the prefer reading reading language.
+ * A night mode, based on the latest browsers API, which allow to determine whether the user has chosen a dark for their OS.
