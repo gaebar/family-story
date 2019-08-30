@@ -1,5 +1,5 @@
 # SEI Project 4 - Family Story
-[![Heroku](http://heroku-badge.herokuapp.com/?app=viet-gram)](https://family-story-ga.herokuapp.com/) 
+[![Heroku](https://heroku-badge-gae.herokuapp.com/?app=viet-gram)](https://family-story-ga.herokuapp.com/) 
 
 ![General Assembly Logo](./screenshots/ga-logo.png)
 
