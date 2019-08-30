@@ -59,59 +59,6 @@ This was a solo project, so I had to overcome many obstacles and challenges inde
 
 I have learned how to create a simple full-stack Flask/React web application, interacting with a PostgreSQL database in a secure manner and Implementing Login and Register functionalities in Python.
 
-___
-
-# Website visuals
-
-## Login
-![Login Screen](./screenshots/login.jpg)
-
-## Register
-
-![Register Screen](./screenshots/register.png)
-
-## Profile
-
-![Profile Screen](./screenshots/profile.png)
-
-## Stories Page
-
-![Story Screen](./screenshots/stories-page.png)
-
-## Write a Story
-
-![Write a Story Screen](./screenshots/write-story.png)
-___
-
-## Install
-
-`brew install pipenv`
-
-`pipenv install`
-
-`yarn install`
-
-### Initialize the PostgreSQL database
-
-`yarn seed`
-
-### Run the app
-
-Start the backend server
-
-`yarn serve:back`
-
-Starts the frontend server
-
-`yarn serve:front`
-
-## Deploy
-
-With heroku, automatically deploys from new code is pushed to `master`
-
-
----
-
 # Interesting code snippets
 
 ## Authentication
@@ -276,6 +223,58 @@ class UserSchema(ma.ModelSchema, BaseSchema):
         model = User
         exclude = ('password_hash', )
 ```
+
+# Website visuals
+
+## Login
+![Login Screen](./screenshots/login.jpg)
+
+## Register
+
+![Register Screen](./screenshots/register.png)
+
+## Profile
+
+![Profile Screen](./screenshots/profile.png)
+
+## Stories Page
+
+![Story Screen](./screenshots/stories-page.png)
+
+## Write a Story
+
+![Write a Story Screen](./screenshots/write-story.png)
+___
+
+## Install
+
+`brew install pipenv`
+
+`pipenv install`
+
+`yarn install`
+
+### Initialize the PostgreSQL database
+
+`yarn seed`
+
+### Run the app
+
+Start the backend server
+
+`yarn serve:back`
+
+Starts the frontend server
+
+`yarn serve:front`
+
+## Deploy
+
+With heroku, automatically deploys from new code is pushed to `master`
+
+
+---
+
 
 ## Future Improvements
 
