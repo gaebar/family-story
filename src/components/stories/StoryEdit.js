@@ -26,11 +26,9 @@ class StoryEdit extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault()
-
-        axios.put(`/api/stories/${this.props.match.params.storyId}`, this.state.data, {
+        axios.put(`/api/stories/${this.props.match.params.storyId}`, this.state.story, {
             headers: { 'Authorization': `${Auth.getToken()}` }
-        })
-            .then(() => this.props.history.push('/stories'))
+        }).then(() => this.props.history.push('/stories'))
             .catch(err => this.setState({ errors: err.response.data.errors }))
     }
 
@@ -43,53 +41,57 @@ class StoryEdit extends React.Component {
                     <Fragment>
                         <h2 className="title">{story.name}</h2>
                         <div className="columns">
-                            <div className="col-6">
-                                <img src={story.image} alt={story.name} className="img-responsive" />
+                            <div className="column is-half">
+                                <figure className="image">
+                                    <img className="storyshowimage" src={story.image_url} alt={story.name} />
+                                </figure>
                             </div>
-                            <div className="col-6">
+                            <div className="column is-half">
                                 <form onSubmit={this.handleSubmit} className="form-autocomplete">
-                                    <h2 className="title text-center">Location</h2>
+                                    <label className="form-label" htmlFor="caption">Title</label>
                                     <input
                                         className={`form-input input-sm ${this.state.errors ? 'is-error' : ''} `}
-                                        name="location"
-                                        value={story.location || ''}
-                                        placeholder="where is this?"
+                                        name="title"
+                                        placeholder="Title"
                                         onChange={this.handleChange}
+                                        value={story.title}
                                     />
-                                    {this.state.errors && <small className="help text-error">{this.state.errors.location}</small>}
+                                    {this.state.errors && <small className="help text-error">{this.state.errors.title}</small>}
 
-                                    <h2 className="title text-center">Caption</h2>
+                                    <label className="form-label" htmlFor="description">Description</label>
                                     <textarea
                                         className={`form-input input-sm ${this.state.errors ? 'is-error' : ''} `}
-                                        name="caption"
-                                        value={story.caption || ''}
-                                        rows="5"
-                                        placeholder="caption here"
+                                        rows="3"
+                                        name="description"
+                                        placeholder="Description"
                                         onChange={this.handleChange}
+                                        value={story.description}
                                     />
-                                    {this.state.errors && <small className="help text-error">{this.state.errors.caption}</small>}
+                                    {this.state.errors && <small className="help text-error">{this.state.errors.description}</small>}
 
-                                    <h2 className="title text-center">Category</h2>
+                                    <label className="form-label" htmlFor="content">Content</label>
+                                    <textarea
+                                        className={`form-input input-sm ${this.state.errors ? 'is-error' : ''} `}
+                                        rows="5"
+                                        name="content"
+                                        placeholder="Content"
+                                        onChange={this.handleChange}
+                                        value={story.content}
+                                    />
+                                    {this.state.errors && <small className="help text-error">{this.state.errors.description}</small>}
 
-                                    <div className="form-group">
-                                        <select
-                                            className={`form-select ${this.state.errors ? 'is-error' : ''} `}
-                                            name="category"
-                                            value={story.category || ''}
-                                            onChange={this.handleChange}
-                                        >
-                                            <option>Choose an option</option>
-                                            <option>Markets</option>
-                                            <option>Temples</option>                      <option>Beaches</option>
-                                            <option>Landscapes</option>
-                                            <option>Others</option>
-                                        </select>
-                                    </div>
-                                    {this.state.errors && <small className="help text-error">{this.state.errors.category}</small>}
-                                    <br />
-                                    <div className="text-center">
-                                        <button type="submit" className="btn btn-primary input-group-btn input-sm storyeditsubmit">Submit</button>
-                                    </div>
+                                    <label className="form-label" htmlFor="image_url">Image URL</label>
+                                    <input
+                                        className={`form-input input-sm ${this.state.errors ? 'is-error' : ''} `}
+                                        name="image_url"
+                                        placeholder="Image URL"
+                                        onChange={this.handleChange}
+                                        value={story.image_url}
+                                    />
+
+                                    {this.state.errors && <small className="help text-error">{this.state.errors.image_url}</small>}
+
+                                    <button type="submit" className="btn btn-primary input-group-btn input-sm">Submit</button>
                                 </form>
                             </div>
                         </div>

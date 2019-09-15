@@ -8,7 +8,9 @@ class StoriesShow extends React.Component {
     constructor() {
         super()
 
-        this.state = { story: null, creator: {} }
+        this.state = { story: null, creator: {}, user: {}, isStoryOwner: false }
+
+        this.handleDelete = this.handleDelete.bind(this)
     }
 
     componentDidMount() {
@@ -19,7 +21,24 @@ class StoriesShow extends React.Component {
         axios.get(`/api/stories/${this.props.match.params.storyId}`, {
             headers: { 'Authorization': `${Auth.getToken()}` }
         })
-            .then(res => this.setState({ story: res.data }))
+            .then(res => {
+                this.setState({ story: res.data })
+                Auth.isAuthenticated() && this.getUserData()
+                return
+            })
+            .catch(err => console.log(err))
+    }
+
+    getUserData() {
+        axios.get('/api/profile', {
+            headers: { Authorization: `Bearer ${Auth.getToken()}` }
+        })
+            .then(res => {
+                const creatorID = this.state.story.creator.id
+                const isStoryOwner = creatorID === res.data.id
+
+                return this.setState({ user: res.data, isStoryOwner: res.data.id === this.state.story.creator.id });
+            })
             .catch(err => console.log(err))
     }
 
@@ -32,11 +51,13 @@ class StoriesShow extends React.Component {
     }
 
     handleDelete() {
-        axios.delete(`/api/stories/${this.props.match.params.storyId}`, {
-            headers: { 'Authorization': Auth.getToken() }
-        })
-            .then(() => this.props.history.push('/stories'))
-            .catch(err => console.log(err))
+        if (window.confirm("Do you really want to delete this story?")) {
+            axios.delete(`/api/stories/${this.props.match.params.storyId}`, {
+                headers: { 'Authorization': Auth.getToken() }
+            })
+                .then(() => this.props.history.push('/stories'))
+                .catch(err => console.log(err))
+        }
     }
 
     render() {
@@ -58,11 +79,20 @@ class StoriesShow extends React.Component {
                                     <div className="col-6">
                                         <h4>{story.title}</h4>
                                     </div>
-
                                 </div>
+
                                 <div className="columns">
                                     <p className="text-normal">{story.description}</p>
                                 </div>
+
+                                {this.state.isStoryOwner &&
+                                    <div>
+                                        <div className="columns">
+                                            <p className="text-normal"> {this.state.isStoryOwner && <Link to={`/stories/${story.id}/edit`} className="">Edit</Link>} or
+                                             <Link to='#' onClick={this.handleDelete} className="">Delete</Link> this story</p>
+                                        </div>
+                                    </div>
+                                }
 
                                 <hr />
 

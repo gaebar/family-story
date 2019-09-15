@@ -35,7 +35,7 @@ const App = () => {
                         !Auth.isAuthenticated() ? (
                             <Redirect to="/login" />
                         ) : (
-                                <Redirect to="/profile" />
+                                <Redirect to="/stories" />
                             )
                     )} />
                     <Route path='/login' component={Login} />

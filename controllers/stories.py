@@ -52,10 +52,6 @@ def update(story_id):
         return jsonify({'message': 'Unauthorized'})
     data = request.get_json()
     errors = {}
-    if not is_unique(model=Story, key='name', value=data.get('name')):
-        errors['name'] = errors.get('name', []) + ['Story name already taken']
-        return jsonify(errors), 422
-
     story, errors = story_schema.load(data, instance=story, partial=True)
     if errors:
         return jsonify(errors), 422
