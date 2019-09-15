@@ -101,7 +101,7 @@ class StoriesShow extends React.Component {
                                 </div>
 
                                 <div className="columns">
-                                    <p className="text-normal">by <Link to={`/users/${story.creator._id}`} >{story.creator.username}</Link></p>
+                                    <p className="text-normal">by <Link to="#" >{story.creator.username}</Link></p>
                                 </div>
 
                                 <Link to="/stories" className="float-right">Find More Stories</Link>

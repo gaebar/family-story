@@ -24,9 +24,7 @@ class Register extends React.Component {
         e.preventDefault()
         axios.post('/api/register', this.state.data)
             .then(() => {
-                // debugger
-                // Flash.setMessage('success', 'Registration Complete')
-                this.props.history.push('/profile')
+                this.props.history.push('/stories')
             })
             .catch(err => {
                 this.setState({ errors: err.response.data })
