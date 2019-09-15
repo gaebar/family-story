@@ -63,7 +63,7 @@ I have learned how to create a simple full-stack Flask/React web application, in
 
 ## Authentication
 
-Firstly we get the Authorization header from the request and extract the token from it. Then we attempt to decode the token. If successful, we attempt to find the user by the sub property in the token's payload, the user's ID. If the user is found we add it to Flask's g module.
+Firstly I get the Authorization header from the request and extract the token from it. Then I attempt to decode the token. If successful, I attempt to find the user by the sub property in the token's payload, the user's ID. If the user is found I add it to Flask's g module.
 
 
 ### Authentication Backend
