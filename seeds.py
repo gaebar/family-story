@@ -96,7 +96,7 @@ with app.app_context():
         description='Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC',
         content=third_story,
         image_url='https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4fa55c56757449.59bad0296cc5b.jpg',
-        creator=albert
+        creator=gaetano
 
     db.session.add(gaetano)
     db.session.add(albert)
