@@ -38,7 +38,7 @@ with app.app_context():
         'email': 'albert@email.com',
         'password': 'pass',
         'password_confirmation': 'pass',
-        'image_url': 'https://scontent-mxp1-1.xx.fbcdn.net/v/t1.0-9/27972644_10156018185657086_798956073035618521_n.jpg?_nc_cat=110&_nc_eui2=AeFUraVTWGpukX1Yjrf3k-FaHCPrN3cb8h3dHNRWQWPYYFnGS086hxurfP0XcKDhOLZW8iIKaILpXyWqp3lpQGubO9DYDFlaa_N-Xbp_Ook9NA&_nc_oc=AQm2bC01_mTa0M_01LctBy_Z9ZzjMslgjB9XkW8S6g5fM7zDrSxxt65mcnq8uyvldgg&_nc_ht=scontent-mxp1-1.xx&oh=78f2f467149caad09fda25a3e078e0ac&oe=5E05EE7D',
+        'image_url': 'https://goodmenproject.com/wp-content/uploads/2019/04/shutterstock_524940991.jpg',
         'bio': 'Writing this website opened a doorway for me into my family’s past, to a room full of anecdotes and stories that I’d never heard before. I thought I knew my history; we’re a family of talkers after all. But there was so much more I discovered through my research, it’s been an absolute joy of a process.'
     })
 
