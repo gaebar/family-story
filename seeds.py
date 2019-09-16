@@ -99,7 +99,46 @@ with app.app_context():
         title='Lorem Ipsum',
         description='Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC',
         content=third_story,
-        image_url='https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4fa55c56757449.59bad0296cc5b.jpg',
+        image_url='https://blog.myheritage.com/wp-content/uploads/old-letters-e1552463906281-875x472.jpg',
+        creator=albert
+    )
+
+    if errors:
+        raise Exception(errors)
+
+    due_story = 'Our Great Uncle Peter was one of nine brothers who left their Italian homeland, by foot in ' + \
+        'the early 1900’s in search of work. Peter learnt the art of glass blowing in Paris and later ' + \
+        'settled in London. His brother Joe ventured further north and after landing in Greenock, Scotland, ' + \
+        'he crossed the sea to Ireland and established a café in Ballymena. With business being good, ' + \
+        'Peter answered Joe’s call for help and later in 1911; with his brother’s guidance, ' + \
+        'he opened his own café in Coleraine. Peter’s café in the town’s Stone Row quickly became ' + \
+        'a popular meeting place for locals. He became renowned for his delicious Fish & Chips, ' + \
+        'and in the summer months, would make home-made ice cream using a recipe that was passed down' + \
+        'by his Father, Barbato. When the sun was shining, Peter would push his ice cream cart to the nearby' + \
+        'resorts of Portrush, Portstewart and Castlerock, where locals and visitors developed quite a taste' + \
+        'for his frozen treats. By 1914 Peter met & fell in love with a local woman, Annie Dymond and after they got married,' + \
+        'they decided to expand the business, opening cafes in Portrush and Portstewart. Peter and Annie didn’t have' + \
+        'any children of their own, so they called upon their nephew and our Grandfather, Angelo to come from Italy' + \
+        ' and help them run the shops. With Angelo and our grandmother Anastasia at the helm, the business ' + \
+        'flourished. Now, five generations later, our Morelli family owned ice cream parlours are an institution in Northern ' + \
+        'Ireland and they continue to trade successfully on the beautiful Causeway Coast. Peter’s brother, ' + \
+        'Joe moved back across the Irish Sea and re-established his business in Broadstairs on the South coast of England.' + \
+        ' Our cousins there have expanded the Morelli brand further by establishing ice cream parlours in Covent Garden, ' + \
+        'the Dubai International Mall and at the Café de Paris in Monte Carlo. Whilst the English branch of the family' + \
+        ' have been busy expanding the Morelli brand in such exotic locations, the Northern Irish branch of the family' + \
+        ' has been busy establishing Morelli’s ice cream across Ireland. Having celebrated our centenary in 2011, ' + \
+        'we now operate scoop franchises throughout the country and our retail packs of ice cream are available in leading ' + \
+        'retail outlets and supermarkets right across Ireland. In 2012, we secured two first prizes in the ' + \
+        'UK National Ice Cream Awards for our famous Double Cream Vanilla and in March of that year we also scooped the' + \
+        ' prestigious Champion of Champions shield at a special ceremony in London. Our family story of hardship, emigration, romance and family' + \
+        ' separation has been well documented. We are extremely proud of our humble beginnings, from our Great Uncle’s little café' + \
+        ' on the cobbled streets of Coleraine into what is now Ireland’s most famous Italian Ice Cream.'
+
+    lorem_due = Story(
+        title='Morelli Ice Cream -History',
+        description='Ireland Famous Italian Ice Cream',
+        content=due_story,
+        image_url='http://www.morellisices.com/images/main_1945.jpg',
         creator=gaetano
     )
 
@@ -109,5 +148,6 @@ with app.app_context():
     db.session.add(origins)
     db.session.add(lorem)
     db.session.add(lorem_three)
+    db.session.add(lorem_due)
 
     db.session.commit()
