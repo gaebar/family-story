@@ -27,7 +27,7 @@ class Stories extends React.Component {
         return (
             <div className="stories-index">
                 <div>
-                    <h1 className="text-center">Family Stories</h1>
+                    <h1 className="text-center">All Stories</h1>
                 </div>
                 {
                     this.state.stories &&
