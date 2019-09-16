@@ -85,11 +85,24 @@ with app.app_context():
         image_url='https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/800f4758483335.59fe0a6b9b40f.jpg',
         creator=albert
     )
+    third_story = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ' + \
+        'ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi' + \
+        'ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum' + \
+        'dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia' + \
+        'deserunt mollit anim id est laborum.'
+
+    lorem_three = Story(
+        title='Lorem Ipsum',
+        description='Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC',
+        content=third_story,
+        image_url='https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4fa55c56757449.59bad0296cc5b.jpg',
+        creator=albert
 
     db.session.add(gaetano)
     db.session.add(albert)
     db.session.add(mapping_my_way)
     db.session.add(origins)
     db.session.add(lorem)
+    db.session.add(lorem_three)
 
     db.session.commit()
