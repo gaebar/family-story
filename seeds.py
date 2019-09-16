@@ -85,6 +85,10 @@ with app.app_context():
         image_url='https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/800f4758483335.59fe0a6b9b40f.jpg',
         creator=albert
     )
+
+    if errors:
+        raise Exception(errors)
+
     third_story = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ' + \
         'ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi' + \
         'ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum' + \
