@@ -281,5 +281,5 @@ With heroku, automatically deploys from new code is pushed to `master`
 The next stage of this project would be adding these features, for example:
  * Private a messages functionality, like I did in the group project [Vietgram](https://github.com/gaebar/vietgram).
  * A more mobile friendly layout.
- * Language translator to let the user choose the prefer reading reading language.
+ * Language translator to let the user choose the prefer reading language.
  * A night mode, based on the latest browsers API, which allow to determine whether the user has chosen a dark for their OS.
