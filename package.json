@@ -30,7 +30,7 @@
     "webpack-dev-server": "^3.1.14"
   },
   "dependencies": {
-    "axios": "^0.21.2",
+    "axios": "^1.6.0",
     "babel-polyfill": "^6.26.0",
     "dotenv": "^16.0.1",
     "dotenv-webpack": "^8.0.1",
